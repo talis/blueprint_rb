@@ -1,7 +1,7 @@
 {
-  "gemName": "blueprint_rb",
+  "gemName": "blueprint_ruby_client",
   "moduleName": "BlueprintClient",
-  "gemVersion": "1.0.0",
+  "gemVersion": "0.1.0",
   "gemLicense": "Copyright Talis Education Ltd",
   "gemHomepage": "https://github.com/talis/blueprint_rb",
   "gemSummary": "A ruby API wrapper for Blueprint",

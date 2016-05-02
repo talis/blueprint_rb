@@ -22,7 +22,7 @@ Add an asset to the node.  Body must be empty.  Will upsert the asset if it does
 ### Example
 ```ruby
 # load the gem
-require 'blueprint_rb'
+require 'blueprint_ruby_client'
 # setup authorization 
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
@@ -85,7 +85,7 @@ Delete an Asset
 ### Example
 ```ruby
 # load the gem
-require 'blueprint_rb'
+require 'blueprint_ruby_client'
 # setup authorization 
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
@@ -141,7 +141,7 @@ Get details of a given asset
 ### Example
 ```ruby
 # load the gem
-require 'blueprint_rb'
+require 'blueprint_ruby_client'
 # setup authorization 
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
@@ -199,7 +199,7 @@ Get for assets in the relevant node
 ### Example
 ```ruby
 # load the gem
-require 'blueprint_rb'
+require 'blueprint_ruby_client'
 # setup authorization 
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
@@ -264,7 +264,7 @@ Remove an asset from the relevant node
 ### Example
 ```ruby
 # load the gem
-require 'blueprint_rb'
+require 'blueprint_ruby_client'
 # setup authorization 
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
@@ -326,7 +326,7 @@ Wholesale replacement of Asset data: if you were to PUT to:\n  /1/{namespace}/as
 ### Example
 ```ruby
 # load the gem
-require 'blueprint_rb'
+require 'blueprint_ruby_client'
 # setup authorization 
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
