@@ -7,5 +7,7 @@
   "gemSummary": "A ruby API wrapper for Blueprint",
   "gemDescription": "A client to utilise the hierarchy modelling abilities of Blueprint",
   "gemAuthor": "Ben Paddock",
-  "gemAuthorEmail": "bp@talis.com"
+  "gemAuthorEmail": "bp@talis.com",
+  "gitUserId": "talis",
+  "gitRepoId": "blueprint_rb"
 }
