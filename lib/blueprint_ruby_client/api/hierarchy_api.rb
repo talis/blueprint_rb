@@ -27,7 +27,7 @@ module BlueprintClient
     # @param [Hash] opts the optional parameters
     # @return [NodeBody]
     def add_node(namespace_inc_global, body, opts = {})
-      data, status_code, headers = add_node_with_http_info(namespace_inc_global, body, opts)
+      data, _status_code, _headers = add_node_with_http_info(namespace_inc_global, body, opts)
       return data
     end
 
@@ -39,14 +39,24 @@ module BlueprintClient
     # @return [Array<(NodeBody, Fixnum, Hash)>] NodeBody data, response status code and response headers
     def add_node_with_http_info(namespace_inc_global, body, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#add_node ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.add_node ..."
       end
       
+      
       # verify the required parameter 'namespace_inc_global' is set
-      fail "Missing the required parameter 'namespace_inc_global' when calling add_node" if namespace_inc_global.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace_inc_global' when calling HierarchyApi.add_node" if namespace_inc_global.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling add_node" if body.nil?
+      fail ArgumentError, "Missing the required parameter 'body' when calling HierarchyApi.add_node" if body.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespaceIncGlobal}/nodes".sub('{format}','json').sub('{' + 'namespaceIncGlobal' + '}', namespace_inc_global.to_s)
@@ -58,12 +68,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -102,11 +112,16 @@ module BlueprintClient
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def bulk_upload_with_http_info(namespace, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#bulk_upload ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.bulk_upload ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling bulk_upload" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.bulk_upload" if namespace.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes.csv".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s)
@@ -118,12 +133,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['text/plain', 'application/octet-stream']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['text/plain', 'application/octet-stream']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -165,17 +180,32 @@ module BlueprintClient
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_node_with_http_info(namespace, id, type, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#delete_node ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.delete_node ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling delete_node" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.delete_node" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling delete_node" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.delete_node" if id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling delete_node" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.delete_node" if type.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'type' + '}', type.to_s)
@@ -187,12 +217,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -230,11 +260,16 @@ module BlueprintClient
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def export_hierarchy_with_http_info(namespace, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#export_hierarchy ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.export_hierarchy ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling export_hierarchy" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.export_hierarchy" if namespace.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes.csv".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s)
@@ -246,12 +281,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -282,7 +317,7 @@ module BlueprintClient
     # @option opts [Float] :limit number of records to return
     # @return [NodeResultSet]
     def get_ancestors(id, namespace, type, opts = {})
-      data, status_code, headers = get_ancestors_with_http_info(id, namespace, type, opts)
+      data, _status_code, _headers = get_ancestors_with_http_info(id, namespace, type, opts)
       return data
     end
 
@@ -297,17 +332,44 @@ module BlueprintClient
     # @return [Array<(NodeResultSet, Fixnum, Hash)>] NodeResultSet data, response status code and response headers
     def get_ancestors_with_http_info(id, namespace, type, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#get_ancestors ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.get_ancestors ..."
       end
       
+      
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling get_ancestors" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.get_ancestors" if id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling get_ancestors" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.get_ancestors" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling get_ancestors" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.get_ancestors" if type.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/ancestors".sub('{format}','json').sub('{' + 'id' + '}', id.to_s).sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s)
@@ -321,12 +383,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -358,7 +420,7 @@ module BlueprintClient
     # @option opts [Float] :limit number of records to return
     # @return [NodeResultSet]
     def get_children(id, namespace, type, opts = {})
-      data, status_code, headers = get_children_with_http_info(id, namespace, type, opts)
+      data, _status_code, _headers = get_children_with_http_info(id, namespace, type, opts)
       return data
     end
 
@@ -373,17 +435,44 @@ module BlueprintClient
     # @return [Array<(NodeResultSet, Fixnum, Hash)>] NodeResultSet data, response status code and response headers
     def get_children_with_http_info(id, namespace, type, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#get_children ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.get_children ..."
       end
       
+      
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling get_children" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.get_children" if id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling get_children" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.get_children" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling get_children" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.get_children" if type.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/children".sub('{format}','json').sub('{' + 'id' + '}', id.to_s).sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s)
@@ -397,12 +486,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -434,7 +523,7 @@ module BlueprintClient
     # @option opts [Float] :limit number of records to return
     # @return [NodeResultSet]
     def get_descendants(id, namespace, type, opts = {})
-      data, status_code, headers = get_descendants_with_http_info(id, namespace, type, opts)
+      data, _status_code, _headers = get_descendants_with_http_info(id, namespace, type, opts)
       return data
     end
 
@@ -449,17 +538,44 @@ module BlueprintClient
     # @return [Array<(NodeResultSet, Fixnum, Hash)>] NodeResultSet data, response status code and response headers
     def get_descendants_with_http_info(id, namespace, type, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#get_descendants ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.get_descendants ..."
       end
       
+      
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling get_descendants" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.get_descendants" if id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling get_descendants" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.get_descendants" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling get_descendants" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.get_descendants" if type.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/descendants".sub('{format}','json').sub('{' + 'id' + '}', id.to_s).sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s)
@@ -473,12 +589,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -509,7 +625,7 @@ module BlueprintClient
     # @option opts [String] :includes comma separated list of elements to hydrate. Can include children, ancestors or both
     # @return [NodeBody]
     def get_node(namespace, id, type, opts = {})
-      data, status_code, headers = get_node_with_http_info(namespace, id, type, opts)
+      data, _status_code, _headers = get_node_with_http_info(namespace, id, type, opts)
       return data
     end
 
@@ -523,21 +639,42 @@ module BlueprintClient
     # @return [Array<(NodeBody, Fixnum, Hash)>] NodeBody data, response status code and response headers
     def get_node_with_http_info(namespace, id, type, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#get_node ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.get_node ..."
       end
+      
       
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling get_node" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.get_node" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling get_node" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.get_node" if id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling get_node" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.get_node" if type.nil?
+      
+      
+      
+      
+      
+      
+      
       
       if opts[:'includes'] && !['children', 'ancestors', 'children,ancestors', 'ancestors,children'].include?(opts[:'includes'])
-        fail 'invalid value for "includes", must be one of children, ancestors, children,ancestors, ancestors,children'
+        fail ArgumentError, 'invalid value for "includes", must be one of children, ancestors, children,ancestors, ancestors,children'
       end
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'type' + '}', type.to_s)
@@ -550,12 +687,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -587,7 +724,7 @@ module BlueprintClient
     # @option opts [Float] :limit number of records to return
     # @return [NodeResultSet]
     def get_parents(id, namespace, type, opts = {})
-      data, status_code, headers = get_parents_with_http_info(id, namespace, type, opts)
+      data, _status_code, _headers = get_parents_with_http_info(id, namespace, type, opts)
       return data
     end
 
@@ -602,17 +739,44 @@ module BlueprintClient
     # @return [Array<(NodeResultSet, Fixnum, Hash)>] NodeResultSet data, response status code and response headers
     def get_parents_with_http_info(id, namespace, type, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#get_parents ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.get_parents ..."
       end
       
+      
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling get_parents" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.get_parents" if id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling get_parents" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.get_parents" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling get_parents" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.get_parents" if type.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/parents".sub('{format}','json').sub('{' + 'id' + '}', id.to_s).sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s)
@@ -626,12 +790,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -662,7 +826,7 @@ module BlueprintClient
     # @param [Hash] opts the optional parameters
     # @return [NodeBody]
     def replace_node(namespace, id, body, type, opts = {})
-      data, status_code, headers = replace_node_with_http_info(namespace, id, body, type, opts)
+      data, _status_code, _headers = replace_node_with_http_info(namespace, id, body, type, opts)
       return data
     end
 
@@ -676,20 +840,40 @@ module BlueprintClient
     # @return [Array<(NodeBody, Fixnum, Hash)>] NodeBody data, response status code and response headers
     def replace_node_with_http_info(namespace, id, body, type, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#replace_node ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.replace_node ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling replace_node" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.replace_node" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling replace_node" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.replace_node" if id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling replace_node" if body.nil?
+      fail ArgumentError, "Missing the required parameter 'body' when calling HierarchyApi.replace_node" if body.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling replace_node" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.replace_node" if type.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'type' + '}', type.to_s)
@@ -701,12 +885,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -745,7 +929,7 @@ module BlueprintClient
     # @option opts [Date] :filter_to limit to results valid before this date, format is  ISO8601
     # @return [NodeResultSet]
     def search_nodes(namespace_inc_global, opts = {})
-      data, status_code, headers = search_nodes_with_http_info(namespace_inc_global, opts)
+      data, _status_code, _headers = search_nodes_with_http_info(namespace_inc_global, opts)
       return data
     end
 
@@ -767,11 +951,82 @@ module BlueprintClient
     # @return [Array<(NodeResultSet, Fixnum, Hash)>] NodeResultSet data, response status code and response headers
     def search_nodes_with_http_info(namespace_inc_global, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#search_nodes ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.search_nodes ..."
       end
       
+      
       # verify the required parameter 'namespace_inc_global' is set
-      fail "Missing the required parameter 'namespace_inc_global' when calling search_nodes" if namespace_inc_global.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace_inc_global' when calling HierarchyApi.search_nodes" if namespace_inc_global.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespaceIncGlobal}/nodes".sub('{format}','json').sub('{' + 'namespaceIncGlobal' + '}', namespace_inc_global.to_s)
@@ -794,12 +1049,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -830,7 +1085,7 @@ module BlueprintClient
     # @param [Hash] opts the optional parameters
     # @return [NodeBody]
     def update_node(namespace, id, body, type, opts = {})
-      data, status_code, headers = update_node_with_http_info(namespace, id, body, type, opts)
+      data, _status_code, _headers = update_node_with_http_info(namespace, id, body, type, opts)
       return data
     end
 
@@ -844,20 +1099,40 @@ module BlueprintClient
     # @return [Array<(NodeBody, Fixnum, Hash)>] NodeBody data, response status code and response headers
     def update_node_with_http_info(namespace, id, body, type, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: HierarchyApi#update_node ..."
+        @api_client.config.logger.debug "Calling API: HierarchyApi.update_node ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling update_node" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.update_node" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling update_node" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.update_node" if id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling update_node" if body.nil?
+      fail ArgumentError, "Missing the required parameter 'body' when calling HierarchyApi.update_node" if body.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling update_node" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.update_node" if type.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'type' + '}', type.to_s)
@@ -869,12 +1144,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}

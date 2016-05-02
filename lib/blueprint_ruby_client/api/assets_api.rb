@@ -30,7 +30,7 @@ module BlueprintClient
     # @param [Hash] opts the optional parameters
     # @return [AssetBody]
     def add_asset_to_node(namespace, type, id, asset_type, asset_id, opts = {})
-      data, status_code, headers = add_asset_to_node_with_http_info(namespace, type, id, asset_type, asset_id, opts)
+      data, _status_code, _headers = add_asset_to_node_with_http_info(namespace, type, id, asset_type, asset_id, opts)
       return data
     end
 
@@ -45,23 +45,48 @@ module BlueprintClient
     # @return [Array<(AssetBody, Fixnum, Hash)>] AssetBody data, response status code and response headers
     def add_asset_to_node_with_http_info(namespace, type, id, asset_type, asset_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AssetsApi#add_asset_to_node ..."
+        @api_client.config.logger.debug "Calling API: AssetsApi.add_asset_to_node ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling add_asset_to_node" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.add_asset_to_node" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling add_asset_to_node" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling AssetsApi.add_asset_to_node" if type.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling add_asset_to_node" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling AssetsApi.add_asset_to_node" if id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'asset_type' is set
-      fail "Missing the required parameter 'asset_type' when calling add_asset_to_node" if asset_type.nil?
+      fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetsApi.add_asset_to_node" if asset_type.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'asset_id' is set
-      fail "Missing the required parameter 'asset_id' when calling add_asset_to_node" if asset_id.nil?
+      fail ArgumentError, "Missing the required parameter 'asset_id' when calling AssetsApi.add_asset_to_node" if asset_id.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'assetType' + '}', asset_type.to_s).sub('{' + 'assetId' + '}', asset_id.to_s)
@@ -73,12 +98,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -121,17 +146,32 @@ module BlueprintClient
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_asset_with_http_info(namespace, asset_id, asset_type, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AssetsApi#delete_asset ..."
+        @api_client.config.logger.debug "Calling API: AssetsApi.delete_asset ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling delete_asset" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.delete_asset" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'asset_id' is set
-      fail "Missing the required parameter 'asset_id' when calling delete_asset" if asset_id.nil?
+      fail ArgumentError, "Missing the required parameter 'asset_id' when calling AssetsApi.delete_asset" if asset_id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'asset_type' is set
-      fail "Missing the required parameter 'asset_type' when calling delete_asset" if asset_type.nil?
+      fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetsApi.delete_asset" if asset_type.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'assetId' + '}', asset_id.to_s).sub('{' + 'assetType' + '}', asset_type.to_s)
@@ -143,12 +183,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -177,7 +217,7 @@ module BlueprintClient
     # @param [Hash] opts the optional parameters
     # @return [AssetBody]
     def get_asset(namespace, asset_type, asset_id, opts = {})
-      data, status_code, headers = get_asset_with_http_info(namespace, asset_type, asset_id, opts)
+      data, _status_code, _headers = get_asset_with_http_info(namespace, asset_type, asset_id, opts)
       return data
     end
 
@@ -190,17 +230,32 @@ module BlueprintClient
     # @return [Array<(AssetBody, Fixnum, Hash)>] AssetBody data, response status code and response headers
     def get_asset_with_http_info(namespace, asset_type, asset_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AssetsApi#get_asset ..."
+        @api_client.config.logger.debug "Calling API: AssetsApi.get_asset ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling get_asset" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.get_asset" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'asset_type' is set
-      fail "Missing the required parameter 'asset_type' when calling get_asset" if asset_type.nil?
+      fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetsApi.get_asset" if asset_type.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'asset_id' is set
-      fail "Missing the required parameter 'asset_id' when calling get_asset" if asset_id.nil?
+      fail ArgumentError, "Missing the required parameter 'asset_id' when calling AssetsApi.get_asset" if asset_id.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'assetType' + '}', asset_type.to_s).sub('{' + 'assetId' + '}', asset_id.to_s)
@@ -212,12 +267,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -250,7 +305,7 @@ module BlueprintClient
     # @option opts [Float] :limit number of records to return
     # @return [AssetResultSet]
     def get_assets_in_node(namespace, type, id, opts = {})
-      data, status_code, headers = get_assets_in_node_with_http_info(namespace, type, id, opts)
+      data, _status_code, _headers = get_assets_in_node_with_http_info(namespace, type, id, opts)
       return data
     end
 
@@ -266,17 +321,50 @@ module BlueprintClient
     # @return [Array<(AssetResultSet, Fixnum, Hash)>] AssetResultSet data, response status code and response headers
     def get_assets_in_node_with_http_info(namespace, type, id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AssetsApi#get_assets_in_node ..."
+        @api_client.config.logger.debug "Calling API: AssetsApi.get_assets_in_node ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling get_assets_in_node" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.get_assets_in_node" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling get_assets_in_node" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling AssetsApi.get_assets_in_node" if type.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling get_assets_in_node" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling AssetsApi.get_assets_in_node" if id.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/assets".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s).sub('{' + 'id' + '}', id.to_s)
@@ -291,12 +379,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -343,23 +431,48 @@ module BlueprintClient
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def remove_asset_from_node_with_http_info(namespace, type, id, asset_type, asset_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AssetsApi#remove_asset_from_node ..."
+        @api_client.config.logger.debug "Calling API: AssetsApi.remove_asset_from_node ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling remove_asset_from_node" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.remove_asset_from_node" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'type' is set
-      fail "Missing the required parameter 'type' when calling remove_asset_from_node" if type.nil?
+      fail ArgumentError, "Missing the required parameter 'type' when calling AssetsApi.remove_asset_from_node" if type.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'id' is set
-      fail "Missing the required parameter 'id' when calling remove_asset_from_node" if id.nil?
+      fail ArgumentError, "Missing the required parameter 'id' when calling AssetsApi.remove_asset_from_node" if id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'asset_type' is set
-      fail "Missing the required parameter 'asset_type' when calling remove_asset_from_node" if asset_type.nil?
+      fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetsApi.remove_asset_from_node" if asset_type.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'asset_id' is set
-      fail "Missing the required parameter 'asset_id' when calling remove_asset_from_node" if asset_id.nil?
+      fail ArgumentError, "Missing the required parameter 'asset_id' when calling AssetsApi.remove_asset_from_node" if asset_id.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'assetType' + '}', asset_type.to_s).sub('{' + 'assetId' + '}', asset_id.to_s)
@@ -371,12 +484,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
@@ -405,7 +518,7 @@ module BlueprintClient
     # @param [Hash] opts the optional parameters
     # @return [AssetBody]
     def replace_asset(namespace, asset_id, asset_type, opts = {})
-      data, status_code, headers = replace_asset_with_http_info(namespace, asset_id, asset_type, opts)
+      data, _status_code, _headers = replace_asset_with_http_info(namespace, asset_id, asset_type, opts)
       return data
     end
 
@@ -418,17 +531,32 @@ module BlueprintClient
     # @return [Array<(AssetBody, Fixnum, Hash)>] AssetBody data, response status code and response headers
     def replace_asset_with_http_info(namespace, asset_id, asset_type, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AssetsApi#replace_asset ..."
+        @api_client.config.logger.debug "Calling API: AssetsApi.replace_asset ..."
       end
       
+      
       # verify the required parameter 'namespace' is set
-      fail "Missing the required parameter 'namespace' when calling replace_asset" if namespace.nil?
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.replace_asset" if namespace.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'asset_id' is set
-      fail "Missing the required parameter 'asset_id' when calling replace_asset" if asset_id.nil?
+      fail ArgumentError, "Missing the required parameter 'asset_id' when calling AssetsApi.replace_asset" if asset_id.nil?
+      
+      
+      
+      
+      
       
       # verify the required parameter 'asset_type' is set
-      fail "Missing the required parameter 'asset_type' when calling replace_asset" if asset_type.nil?
+      fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetsApi.replace_asset" if asset_type.nil?
+      
+      
+      
+      
       
       # resource path
       local_var_path = "/{namespace}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'assetId' + '}', asset_id.to_s).sub('{' + 'assetType' + '}', asset_type.to_s)
@@ -440,12 +568,12 @@ module BlueprintClient
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/vnd.api+json']
-      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      _header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
       form_params = {}
