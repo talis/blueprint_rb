@@ -18,12 +18,14 @@ require 'blueprint_ruby_client/configuration'
 
 # Models
 require 'blueprint_ruby_client/models/asset'
+require 'blueprint_ruby_client/models/asset_attributes'
 require 'blueprint_ruby_client/models/asset_body'
 require 'blueprint_ruby_client/models/asset_result_set'
 require 'blueprint_ruby_client/models/error'
 require 'blueprint_ruby_client/models/errors'
 require 'blueprint_ruby_client/models/links'
 require 'blueprint_ruby_client/models/meta'
+require 'blueprint_ruby_client/models/mixed_resource_result_set'
 require 'blueprint_ruby_client/models/namespace'
 require 'blueprint_ruby_client/models/namespace_relationship'
 require 'blueprint_ruby_client/models/node'
@@ -32,6 +34,7 @@ require 'blueprint_ruby_client/models/node_body'
 require 'blueprint_ruby_client/models/node_relationship'
 require 'blueprint_ruby_client/models/node_relationships'
 require 'blueprint_ruby_client/models/node_result_set'
+require 'blueprint_ruby_client/models/resource'
 
 # APIs
 require 'blueprint_ruby_client/api/assets_api'

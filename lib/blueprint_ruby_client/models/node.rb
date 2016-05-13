@@ -14,7 +14,7 @@ require 'date'
 
 module BlueprintClient
   class Node
-    # the unique id of the node of a given type.
+    # the unique id of the resource of a given type.
     attr_accessor :id
 
     attr_accessor :type

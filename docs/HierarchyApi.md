@@ -446,7 +446,7 @@ id = "id_example" # String | id identifying a domain model
 type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
 
 opts = { 
-  includes: "includes_example" # String | comma separated list of elements to hydrate. Can include children, ancestors or both
+  include: ["include_example"] # Array<String> | comma separated list of elements to hydrate. Can include children, parents, and/or assets
 }
 
 begin
@@ -465,7 +465,7 @@ Name | Type | Description  | Notes
  **namespace** | **String**| identifier namespacing the blueprint. | 
  **id** | **String**| id identifying a domain model | 
  **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
- **includes** | **String**| comma separated list of elements to hydrate. Can include children, ancestors or both | [optional] 
+ **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, and/or assets | [optional] 
 
 ### Return type
 
@@ -631,13 +631,14 @@ namespace_inc_global = "namespace_inc_global_example" # String | identifier name
 opts = { 
   offset: 3.4, # Float | index to start result set from
   limit: 3.4 # Float | number of records to return
-  filter_node_type: "filter_node_type_example", # String | type of nodes to return
-  filter_child: "filter_child_example", # String | limit to nodes with children matching code
-  filter_parent: "filter_parent_example", # String | limit to nodes with parent matching code
-  filter_ancestor: "filter_ancestor_example", # String | limit to nodes with ancestor matching code
-  filter_descendant: "filter_descendant_example", # String | limit to nodes with descendant matching code
+  include: ["include_example"] # Array<String> | comma separated list of elements to hydrate. Can include children, parents, and/or assets
+  filter_node_type: ["filter_node_type_example"], # Array<String> | type of nodes to return
+  filter_child: ["filter_child_example"], # Array<String> | limit to nodes with children matching type/code
+  filter_parent: ["filter_parent_example"], # Array<String> | limit to nodes with parent matching type/code
+  filter_ancestor: ["filter_ancestor_example"], # Array<String> | limit to nodes with ancestor matching type/code
+  filter_descendant: ["filter_descendant_example"], # Array<String> | limit to nodes with descendant matching type/code
   filter_has_assets: true, # BOOLEAN | limit to either nodes that have assets (true) nodes that have no assets (false) or omit to consider both nodes with and without assets
-  filter_asset_type: "filter_asset_type_example", # String | type of asset to return
+  filter_asset_type: ["filter_asset_type_example"], # Array<String> | type of asset to return
   filter_from: Date.parse("2013-10-20"), # Date | limit to results valid after this date, format is  ISO8601 date
   filter_to: Date.parse("2013-10-20") # Date | limit to results valid before this date, format is  ISO8601
 }
@@ -658,13 +659,14 @@ Name | Type | Description  | Notes
  **namespace_inc_global** | **String**| identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call. | 
  **offset** | [**Float**](.md)| index to start result set from | [optional] 
  **limit** | [**Float**](.md)| number of records to return | [optional] 
- **filter_node_type** | **String**| type of nodes to return | [optional] 
- **filter_child** | **String**| limit to nodes with children matching code | [optional] 
- **filter_parent** | **String**| limit to nodes with parent matching code | [optional] 
- **filter_ancestor** | **String**| limit to nodes with ancestor matching code | [optional] 
- **filter_descendant** | **String**| limit to nodes with descendant matching code | [optional] 
+ **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, and/or assets | [optional] 
+ **filter_node_type** | [**Array&lt;String&gt;**](String.md)| type of nodes to return | [optional] 
+ **filter_child** | [**Array&lt;String&gt;**](String.md)| limit to nodes with children matching type/code | [optional] 
+ **filter_parent** | [**Array&lt;String&gt;**](String.md)| limit to nodes with parent matching type/code | [optional] 
+ **filter_ancestor** | [**Array&lt;String&gt;**](String.md)| limit to nodes with ancestor matching type/code | [optional] 
+ **filter_descendant** | [**Array&lt;String&gt;**](String.md)| limit to nodes with descendant matching type/code | [optional] 
  **filter_has_assets** | **BOOLEAN**| limit to either nodes that have assets (true) nodes that have no assets (false) or omit to consider both nodes with and without assets | [optional] 
- **filter_asset_type** | **String**| type of asset to return | [optional] 
+ **filter_asset_type** | [**Array&lt;String&gt;**](String.md)| type of asset to return | [optional] 
  **filter_from** | **Date**| limit to results valid after this date, format is  ISO8601 date | [optional] 
  **filter_to** | **Date**| limit to results valid before this date, format is  ISO8601 | [optional] 
 

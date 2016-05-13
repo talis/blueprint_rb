@@ -18,13 +18,17 @@ module BlueprintClient
 
     attr_accessor :data
 
+    attr_accessor :included
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         
         :'meta' => :'meta',
         
-        :'data' => :'data'
+        :'data' => :'data',
+        
+        :'included' => :'included'
         
       }
     end
@@ -35,7 +39,9 @@ module BlueprintClient
         
         :'meta' => :'Meta',
         
-        :'data' => :'Array<Asset>'
+        :'data' => :'Array<Asset>',
+        
+        :'included' => :'Array<MixedResourceResultSet>'
         
       }
     end
@@ -69,6 +75,17 @@ module BlueprintClient
       end
 
       
+      if attributes.has_key?(:'included')
+        
+        if (value = attributes[:'included']).is_a?(Array)
+          self.included = value
+        end
+        
+        
+      
+      end
+
+      
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -92,8 +109,17 @@ module BlueprintClient
       
       
       
+      
+      
+      
+      
     end
 
+    
+    
+    
+    
+    
     
     
     
@@ -111,7 +137,8 @@ module BlueprintClient
       return true if self.equal?(o)
       self.class == o.class &&
           meta == o.meta &&
-          data == o.data
+          data == o.data &&
+          included == o.included
     end
 
     # @see the `==` method
@@ -123,7 +150,7 @@ module BlueprintClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [meta, data].hash
+      [meta, data, included].hash
     end
 
     # Builds the object from hash

@@ -300,7 +300,7 @@ module BlueprintClient
     # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
     # @param id id identifying a domain model
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :filter_asset_type type of asset to return
+    # @option opts [Array<String>] :filter_asset_type type of asset to return
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
     # @return [AssetResultSet]
@@ -315,7 +315,7 @@ module BlueprintClient
     # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
     # @param id id identifying a domain model
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :filter_asset_type type of asset to return
+    # @option opts [Array<String>] :filter_asset_type type of asset to return
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
     # @return [Array<(AssetResultSet, Fixnum, Hash)>] AssetResultSet data, response status code and response headers
@@ -371,7 +371,7 @@ module BlueprintClient
 
       # query parameters
       query_params = {}
-      query_params[:'filter[assetType]'] = opts[:'filter_asset_type'] if opts[:'filter_asset_type']
+      query_params[:'filter[assetType]'] = @api_client.build_collection_param(opts[:'filter_asset_type'], :csv) if opts[:'filter_asset_type']
       query_params[:'offset'] = opts[:'offset'] if opts[:'offset']
       query_params[:'limit'] = opts[:'limit'] if opts[:'limit']
 
@@ -516,6 +516,7 @@ module BlueprintClient
     # @param asset_id id of an asset
     # @param asset_type Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
     # @param [Hash] opts the optional parameters
+    # @option opts [AssetBody] :body asset
     # @return [AssetBody]
     def replace_asset(namespace, asset_id, asset_type, opts = {})
       data, _status_code, _headers = replace_asset_with_http_info(namespace, asset_id, asset_type, opts)
@@ -528,6 +529,7 @@ module BlueprintClient
     # @param asset_id id of an asset
     # @param asset_type Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
     # @param [Hash] opts the optional parameters
+    # @option opts [AssetBody] :body asset
     # @return [Array<(AssetBody, Fixnum, Hash)>] AssetBody data, response status code and response headers
     def replace_asset_with_http_info(namespace, asset_id, asset_type, opts = {})
       if @api_client.config.debugging
@@ -558,6 +560,12 @@ module BlueprintClient
       
       
       
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'assetId' + '}', asset_id.to_s).sub('{' + 'assetType' + '}', asset_type.to_s)
 
@@ -579,7 +587,7 @@ module BlueprintClient
       form_params = {}
 
       # http body (model)
-      post_body = nil
+      post_body = @api_client.object_to_http_body(opts[:'body'])
       
       auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,

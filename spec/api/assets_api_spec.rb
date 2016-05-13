@@ -95,7 +95,7 @@ describe 'AssetsApi' do
   # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
   # @param id id identifying a domain model
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :filter_asset_type type of asset to return
+  # @option opts [Array<String>] :filter_asset_type type of asset to return
   # @option opts [Float] :offset index to start result set from
   # @option opts [Float] :limit number of records to return
   # @return [AssetResultSet]
@@ -136,6 +136,7 @@ describe 'AssetsApi' do
   # @param asset_id id of an asset
   # @param asset_type Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
   # @param [Hash] opts the optional parameters
+  # @option opts [AssetBody] :body asset
   # @return [AssetBody]
   describe 'replace_asset test' do
     it "should work" do

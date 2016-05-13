@@ -622,7 +622,7 @@ module BlueprintClient
     # @param id id identifying a domain model
     # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :includes comma separated list of elements to hydrate. Can include children, ancestors or both
+    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
     # @return [NodeBody]
     def get_node(namespace, id, type, opts = {})
       data, _status_code, _headers = get_node_with_http_info(namespace, id, type, opts)
@@ -635,7 +635,7 @@ module BlueprintClient
     # @param id id identifying a domain model
     # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :includes comma separated list of elements to hydrate. Can include children, ancestors or both
+    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
     # @return [Array<(NodeBody, Fixnum, Hash)>] NodeBody data, response status code and response headers
     def get_node_with_http_info(namespace, id, type, opts = {})
       if @api_client.config.debugging
@@ -669,10 +669,6 @@ module BlueprintClient
       
       
       
-      if opts[:'includes'] && !['children', 'ancestors', 'children,ancestors', 'ancestors,children'].include?(opts[:'includes'])
-        fail ArgumentError, 'invalid value for "includes", must be one of children, ancestors, children,ancestors, ancestors,children'
-      end
-      
       
       
       
@@ -681,7 +677,7 @@ module BlueprintClient
 
       # query parameters
       query_params = {}
-      query_params[:'includes'] = opts[:'includes'] if opts[:'includes']
+      query_params[:'include'] = @api_client.build_collection_param(opts[:'include'], :csv) if opts[:'include']
 
       # header parameters
       header_params = {}
@@ -918,13 +914,14 @@ module BlueprintClient
     # @param [Hash] opts the optional parameters
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
-    # @option opts [String] :filter_node_type type of nodes to return
-    # @option opts [String] :filter_child limit to nodes with children matching code
-    # @option opts [String] :filter_parent limit to nodes with parent matching code
-    # @option opts [String] :filter_ancestor limit to nodes with ancestor matching code
-    # @option opts [String] :filter_descendant limit to nodes with descendant matching code
+    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
+    # @option opts [Array<String>] :filter_node_type type of nodes to return
+    # @option opts [Array<String>] :filter_child limit to nodes with children matching type/code
+    # @option opts [Array<String>] :filter_parent limit to nodes with parent matching type/code
+    # @option opts [Array<String>] :filter_ancestor limit to nodes with ancestor matching type/code
+    # @option opts [Array<String>] :filter_descendant limit to nodes with descendant matching type/code
     # @option opts [BOOLEAN] :filter_has_assets limit to either nodes that have assets (true) nodes that have no assets (false) or omit to consider both nodes with and without assets
-    # @option opts [String] :filter_asset_type type of asset to return
+    # @option opts [Array<String>] :filter_asset_type type of asset to return
     # @option opts [Date] :filter_from limit to results valid after this date, format is  ISO8601 date
     # @option opts [Date] :filter_to limit to results valid before this date, format is  ISO8601
     # @return [NodeResultSet]
@@ -939,13 +936,14 @@ module BlueprintClient
     # @param [Hash] opts the optional parameters
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
-    # @option opts [String] :filter_node_type type of nodes to return
-    # @option opts [String] :filter_child limit to nodes with children matching code
-    # @option opts [String] :filter_parent limit to nodes with parent matching code
-    # @option opts [String] :filter_ancestor limit to nodes with ancestor matching code
-    # @option opts [String] :filter_descendant limit to nodes with descendant matching code
+    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
+    # @option opts [Array<String>] :filter_node_type type of nodes to return
+    # @option opts [Array<String>] :filter_child limit to nodes with children matching type/code
+    # @option opts [Array<String>] :filter_parent limit to nodes with parent matching type/code
+    # @option opts [Array<String>] :filter_ancestor limit to nodes with ancestor matching type/code
+    # @option opts [Array<String>] :filter_descendant limit to nodes with descendant matching type/code
     # @option opts [BOOLEAN] :filter_has_assets limit to either nodes that have assets (true) nodes that have no assets (false) or omit to consider both nodes with and without assets
-    # @option opts [String] :filter_asset_type type of asset to return
+    # @option opts [Array<String>] :filter_asset_type type of asset to return
     # @option opts [Date] :filter_from limit to results valid after this date, format is  ISO8601 date
     # @option opts [Date] :filter_to limit to results valid before this date, format is  ISO8601
     # @return [Array<(NodeResultSet, Fixnum, Hash)>] NodeResultSet data, response status code and response headers
@@ -1028,6 +1026,12 @@ module BlueprintClient
       
       
       
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespaceIncGlobal}/nodes".sub('{format}','json').sub('{' + 'namespaceIncGlobal' + '}', namespace_inc_global.to_s)
 
@@ -1035,13 +1039,14 @@ module BlueprintClient
       query_params = {}
       query_params[:'offset'] = opts[:'offset'] if opts[:'offset']
       query_params[:'limit'] = opts[:'limit'] if opts[:'limit']
-      query_params[:'filter[nodeType]'] = opts[:'filter_node_type'] if opts[:'filter_node_type']
-      query_params[:'filter[child]'] = opts[:'filter_child'] if opts[:'filter_child']
-      query_params[:'filter[parent]'] = opts[:'filter_parent'] if opts[:'filter_parent']
-      query_params[:'filter[ancestor]'] = opts[:'filter_ancestor'] if opts[:'filter_ancestor']
-      query_params[:'filter[descendant]'] = opts[:'filter_descendant'] if opts[:'filter_descendant']
+      query_params[:'include'] = @api_client.build_collection_param(opts[:'include'], :csv) if opts[:'include']
+      query_params[:'filter[nodeType]'] = @api_client.build_collection_param(opts[:'filter_node_type'], :csv) if opts[:'filter_node_type']
+      query_params[:'filter[child]'] = @api_client.build_collection_param(opts[:'filter_child'], :csv) if opts[:'filter_child']
+      query_params[:'filter[parent]'] = @api_client.build_collection_param(opts[:'filter_parent'], :csv) if opts[:'filter_parent']
+      query_params[:'filter[ancestor]'] = @api_client.build_collection_param(opts[:'filter_ancestor'], :csv) if opts[:'filter_ancestor']
+      query_params[:'filter[descendant]'] = @api_client.build_collection_param(opts[:'filter_descendant'], :csv) if opts[:'filter_descendant']
       query_params[:'filter[hasAssets]'] = opts[:'filter_has_assets'] if opts[:'filter_has_assets']
-      query_params[:'filter[assetType]'] = opts[:'filter_asset_type'] if opts[:'filter_asset_type']
+      query_params[:'filter[assetType]'] = @api_client.build_collection_param(opts[:'filter_asset_type'], :csv) if opts[:'filter_asset_type']
       query_params[:'filter[from]'] = opts[:'filter_from'] if opts[:'filter_from']
       query_params[:'filter[to]'] = opts[:'filter_to'] if opts[:'filter_to']
 
