@@ -166,7 +166,7 @@ describe 'HierarchyApi' do
   # @param id id identifying a domain model
   # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :includes comma separated list of elements to hydrate. Can include children, ancestors or both
+  # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
   # @return [NodeBody]
   describe 'get_node test' do
     it "should work" do
@@ -224,13 +224,14 @@ describe 'HierarchyApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Float] :offset index to start result set from
   # @option opts [Float] :limit number of records to return
-  # @option opts [String] :filter_node_type type of nodes to return
-  # @option opts [String] :filter_child limit to nodes with children matching code
-  # @option opts [String] :filter_parent limit to nodes with parent matching code
-  # @option opts [String] :filter_ancestor limit to nodes with ancestor matching code
-  # @option opts [String] :filter_descendant limit to nodes with descendant matching code
+  # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
+  # @option opts [Array<String>] :filter_node_type type of nodes to return
+  # @option opts [Array<String>] :filter_child limit to nodes with children matching type/code
+  # @option opts [Array<String>] :filter_parent limit to nodes with parent matching type/code
+  # @option opts [Array<String>] :filter_ancestor limit to nodes with ancestor matching type/code
+  # @option opts [Array<String>] :filter_descendant limit to nodes with descendant matching type/code
   # @option opts [BOOLEAN] :filter_has_assets limit to either nodes that have assets (true) nodes that have no assets (false) or omit to consider both nodes with and without assets
-  # @option opts [String] :filter_asset_type type of asset to return
+  # @option opts [Array<String>] :filter_asset_type type of asset to return
   # @option opts [Date] :filter_from limit to results valid after this date, format is  ISO8601 date
   # @option opts [Date] :filter_to limit to results valid before this date, format is  ISO8601
   # @return [NodeResultSet]

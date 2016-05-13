@@ -14,9 +14,12 @@ require 'date'
 
 module BlueprintClient
   class Asset
+    # the unique id of the resource of a given type.
     attr_accessor :id
 
     attr_accessor :type
+
+    attr_accessor :attributes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -24,7 +27,9 @@ module BlueprintClient
         
         :'id' => :'id',
         
-        :'type' => :'type'
+        :'type' => :'type',
+        
+        :'attributes' => :'attributes'
         
       }
     end
@@ -35,7 +40,9 @@ module BlueprintClient
         
         :'id' => :'String',
         
-        :'type' => :'String'
+        :'type' => :'String',
+        
+        :'attributes' => :'Object'
         
       }
     end
@@ -62,6 +69,15 @@ module BlueprintClient
         
         
         self.type = attributes[:'type']
+        
+      
+      end
+
+      
+      if attributes.has_key?(:'attributes')
+        
+        
+        self.attributes = attributes[:'attributes']
         
       
       end
@@ -100,8 +116,17 @@ module BlueprintClient
       
       
       
+      
+      
+      
+      
     end
 
+    
+    
+    
+    
+    
     
     
     
@@ -119,7 +144,8 @@ module BlueprintClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          type == o.type
+          type == o.type &&
+          attributes == o.attributes
     end
 
     # @see the `==` method
@@ -131,7 +157,7 @@ module BlueprintClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, type].hash
+      [id, type, attributes].hash
     end
 
     # Builds the object from hash
