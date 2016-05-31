@@ -640,7 +640,12 @@ opts = {
   filter_has_assets: true, # BOOLEAN | limit to either nodes that have assets (true) nodes that have no assets (false) or omit to consider both nodes with and without assets
   filter_asset_type: ["filter_asset_type_example"], # Array<String> | type of asset to return
   filter_from: Date.parse("2013-10-20"), # Date | limit to results valid after this date, format is  ISO8601 date
-  filter_to: Date.parse("2013-10-20") # Date | limit to results valid before this date, format is  ISO8601
+  filter_to: Date.parse("2013-10-20"), # Date | limit to results valid before this date, format is  ISO8601
+  q_node: "q_node_example", # String | query term(s) to search for nodes.  Allows wildcard searching with '*'
+  q_child: "q_child_example", # String | query id/title terms to search for child nodes.  Allows wildcard searching with '*'
+  q_parent: "q_parent_example", # String | query id/title terms to search for parent nodes.  Allows wildcard searching with '*'
+  q_descendant: "q_descendant_example", # String | query id/title terms to search for descendant nodes.  Allows wildcard searching with '*'
+  q_ancestor: "q_ancestor_example" # String | query id/title terms to search for ancestor nodes.  Allows wildcard searching with '*'
 }
 
 begin
@@ -669,6 +674,11 @@ Name | Type | Description  | Notes
  **filter_asset_type** | [**Array&lt;String&gt;**](String.md)| type of asset to return | [optional] 
  **filter_from** | **Date**| limit to results valid after this date, format is  ISO8601 date | [optional] 
  **filter_to** | **Date**| limit to results valid before this date, format is  ISO8601 | [optional] 
+ **q_node** | **String**| query term(s) to search for nodes.  Allows wildcard searching with &#39;*&#39; | [optional] 
+ **q_child** | **String**| query id/title terms to search for child nodes.  Allows wildcard searching with &#39;*&#39; | [optional] 
+ **q_parent** | **String**| query id/title terms to search for parent nodes.  Allows wildcard searching with &#39;*&#39; | [optional] 
+ **q_descendant** | **String**| query id/title terms to search for descendant nodes.  Allows wildcard searching with &#39;*&#39; | [optional] 
+ **q_ancestor** | **String**| query id/title terms to search for ancestor nodes.  Allows wildcard searching with &#39;*&#39; | [optional] 
 
 ### Return type
 

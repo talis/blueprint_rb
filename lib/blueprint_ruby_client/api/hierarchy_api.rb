@@ -924,6 +924,11 @@ module BlueprintClient
     # @option opts [Array<String>] :filter_asset_type type of asset to return
     # @option opts [Date] :filter_from limit to results valid after this date, format is  ISO8601 date
     # @option opts [Date] :filter_to limit to results valid before this date, format is  ISO8601
+    # @option opts [String] :q_node query term(s) to search for nodes.  Allows wildcard searching with &#39;*&#39;
+    # @option opts [String] :q_child query id/title terms to search for child nodes.  Allows wildcard searching with &#39;*&#39;
+    # @option opts [String] :q_parent query id/title terms to search for parent nodes.  Allows wildcard searching with &#39;*&#39;
+    # @option opts [String] :q_descendant query id/title terms to search for descendant nodes.  Allows wildcard searching with &#39;*&#39;
+    # @option opts [String] :q_ancestor query id/title terms to search for ancestor nodes.  Allows wildcard searching with &#39;*&#39;
     # @return [NodeResultSet]
     def search_nodes(namespace_inc_global, opts = {})
       data, _status_code, _headers = search_nodes_with_http_info(namespace_inc_global, opts)
@@ -946,6 +951,11 @@ module BlueprintClient
     # @option opts [Array<String>] :filter_asset_type type of asset to return
     # @option opts [Date] :filter_from limit to results valid after this date, format is  ISO8601 date
     # @option opts [Date] :filter_to limit to results valid before this date, format is  ISO8601
+    # @option opts [String] :q_node query term(s) to search for nodes.  Allows wildcard searching with &#39;*&#39;
+    # @option opts [String] :q_child query id/title terms to search for child nodes.  Allows wildcard searching with &#39;*&#39;
+    # @option opts [String] :q_parent query id/title terms to search for parent nodes.  Allows wildcard searching with &#39;*&#39;
+    # @option opts [String] :q_descendant query id/title terms to search for descendant nodes.  Allows wildcard searching with &#39;*&#39;
+    # @option opts [String] :q_ancestor query id/title terms to search for ancestor nodes.  Allows wildcard searching with &#39;*&#39;
     # @return [Array<(NodeResultSet, Fixnum, Hash)>] NodeResultSet data, response status code and response headers
     def search_nodes_with_http_info(namespace_inc_global, opts = {})
       if @api_client.config.debugging
@@ -955,6 +965,36 @@ module BlueprintClient
       
       # verify the required parameter 'namespace_inc_global' is set
       fail ArgumentError, "Missing the required parameter 'namespace_inc_global' when calling HierarchyApi.search_nodes" if namespace_inc_global.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       
@@ -1049,6 +1089,11 @@ module BlueprintClient
       query_params[:'filter[assetType]'] = @api_client.build_collection_param(opts[:'filter_asset_type'], :csv) if opts[:'filter_asset_type']
       query_params[:'filter[from]'] = opts[:'filter_from'] if opts[:'filter_from']
       query_params[:'filter[to]'] = opts[:'filter_to'] if opts[:'filter_to']
+      query_params[:'q[node]'] = opts[:'q_node'] if opts[:'q_node']
+      query_params[:'q[child]'] = opts[:'q_child'] if opts[:'q_child']
+      query_params[:'q[parent]'] = opts[:'q_parent'] if opts[:'q_parent']
+      query_params[:'q[descendant]'] = opts[:'q_descendant'] if opts[:'q_descendant']
+      query_params[:'q[ancestor]'] = opts[:'q_ancestor'] if opts[:'q_ancestor']
 
       # header parameters
       header_params = {}
