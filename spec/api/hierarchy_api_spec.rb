@@ -234,6 +234,11 @@ describe 'HierarchyApi' do
   # @option opts [Array<String>] :filter_asset_type type of asset to return
   # @option opts [Date] :filter_from limit to results valid after this date, format is  ISO8601 date
   # @option opts [Date] :filter_to limit to results valid before this date, format is  ISO8601
+  # @option opts [String] :q_node query term(s) to search for nodes.  Allows wildcard searching with &#39;*&#39;
+  # @option opts [String] :q_child query id/title terms to search for child nodes.  Allows wildcard searching with &#39;*&#39;
+  # @option opts [String] :q_parent query id/title terms to search for parent nodes.  Allows wildcard searching with &#39;*&#39;
+  # @option opts [String] :q_descendant query id/title terms to search for descendant nodes.  Allows wildcard searching with &#39;*&#39;
+  # @option opts [String] :q_ancestor query id/title terms to search for ancestor nodes.  Allows wildcard searching with &#39;*&#39;
   # @return [NodeResultSet]
   describe 'search_nodes test' do
     it "should work" do
