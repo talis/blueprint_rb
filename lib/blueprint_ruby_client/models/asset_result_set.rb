@@ -41,7 +41,7 @@ module BlueprintClient
         
         :'data' => :'Array<Asset>',
         
-        :'included' => :'Array<MixedResourceResultSet>'
+        :'included' => :'Array<Resource>'
         
       }
     end
