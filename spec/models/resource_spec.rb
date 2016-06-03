@@ -52,5 +52,15 @@ describe 'Resource' do
     end
   end
 
+  describe 'test attribute "attributes"' do
+    it 'should work' do
+       # assertion here
+       # should be_a()
+       # should be_nil
+       # should ==
+       # should_not ==
+    end
+  end
+
 end
 
