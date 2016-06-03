@@ -18,7 +18,6 @@ require 'blueprint_ruby_client/configuration'
 
 # Models
 require 'blueprint_ruby_client/models/asset'
-require 'blueprint_ruby_client/models/asset_attributes'
 require 'blueprint_ruby_client/models/asset_body'
 require 'blueprint_ruby_client/models/asset_relationship'
 require 'blueprint_ruby_client/models/asset_result_set'
