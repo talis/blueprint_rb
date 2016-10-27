@@ -131,7 +131,7 @@ describe 'AssetsApi' do
 
   # unit tests for replace_asset
   # Replaces the Asset with the data sent in the body
-  # Wholesale replacement of Asset data: if you were to PUT to:\n  /1/{namespace}/assets/sometype/someid\n\nwith a body of:\n  { type: \&quot;someothertype\&quot;, id: \&quot;someotherid\&quot; }\n\nIt would change the Asset&#39;s path to:\n  /1/{namespace}/assets/someothertype/someotherid\n\nand\n  /1/{namespace}/assets/sometype/someid\nwould return a 404.\nIt would also update the assets associated with any node.\n
+  # Wholesale replacement of Asset data: if you were to PUT to:   /1/{namespace}/assets/sometype/someid  with a body of:   { type: \&quot;someothertype\&quot;, id: \&quot;someotherid\&quot; }  It would change the Asset&#39;s path to:   /1/{namespace}/assets/someothertype/someotherid  and   /1/{namespace}/assets/sometype/someid would return a 404. It would also update the assets associated with any node. 
   # @param namespace identifier namespacing the blueprint.
   # @param asset_id id of an asset
   # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.

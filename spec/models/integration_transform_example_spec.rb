@@ -32,7 +32,7 @@ describe 'IntegrationTransformExample' do
       @instance.should be_a(BlueprintClient::IntegrationTransformExample) 
     end
   end
-  describe 'test attribute "output"' do
+  describe 'test attribute "input"' do
     it 'should work' do
        # assertion here
        # should be_a()
@@ -42,7 +42,7 @@ describe 'IntegrationTransformExample' do
     end
   end
 
-  describe 'test attribute "input"' do
+  describe 'test attribute "output"' do
     it 'should work' do
        # assertion here
        # should be_a()

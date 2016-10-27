@@ -92,5 +92,25 @@ describe 'NodeAttributes' do
     end
   end
 
+  describe 'test attribute "reminder_date"' do
+    it 'should work' do
+       # assertion here
+       # should be_a()
+       # should be_nil
+       # should ==
+       # should_not ==
+    end
+  end
+
+  describe 'test attribute "deadline"' do
+    it 'should work' do
+       # assertion here
+       # should be_a()
+       # should be_nil
+       # should ==
+       # should_not ==
+    end
+  end
+
 end
 
