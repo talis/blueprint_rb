@@ -70,7 +70,7 @@ describe 'HierarchyApi' do
   # Delete a node
   # @param namespace identifier namespacing the blueprint.
   # @param id id identifying a domain model
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'delete_node test' do
@@ -104,7 +104,7 @@ describe 'HierarchyApi' do
   # A proxy for finding ancestors of a given node, equivalent to\n`/1/abc/nodes?filter[descendant]=department%2Fdep101`\n
   # @param id id identifying a domain model
   # @param namespace identifier namespacing the blueprint.
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @option opts [Float] :offset index to start result set from
   # @option opts [Float] :limit number of records to return
@@ -124,7 +124,7 @@ describe 'HierarchyApi' do
   # A proxy for finding children of a given node, equivalent to\n`/1/abc/nodes?filter[parent]=department%2Fdep101`\n
   # @param id id identifying a domain model
   # @param namespace identifier namespacing the blueprint.
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @option opts [Float] :offset index to start result set from
   # @option opts [Float] :limit number of records to return
@@ -144,7 +144,7 @@ describe 'HierarchyApi' do
   # A proxy for finding descendants of a given node, equivalent to\n`/1/abc/nodes?filter[ancestor]=department%2Fdep101`\n
   # @param id id identifying a domain model
   # @param namespace identifier namespacing the blueprint.
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @option opts [Float] :offset index to start result set from
   # @option opts [Float] :limit number of records to return
@@ -164,7 +164,7 @@ describe 'HierarchyApi' do
   # Get details of a given node
   # @param namespace identifier namespacing the blueprint.
   # @param id id identifying a domain model
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
   # @return [NodeBody]
@@ -183,7 +183,7 @@ describe 'HierarchyApi' do
   # A proxy for finding parents of a given node, equivalent to\n`/1/abc/nodes?filter[child]=department%2Fdep101`\n
   # @param id id identifying a domain model
   # @param namespace identifier namespacing the blueprint.
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @option opts [Float] :offset index to start result set from
   # @option opts [Float] :limit number of records to return
@@ -204,7 +204,7 @@ describe 'HierarchyApi' do
   # @param namespace identifier namespacing the blueprint.
   # @param id id identifying a domain model
   # @param body node
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @return [NodeBody]
   describe 'replace_node test' do
@@ -219,7 +219,7 @@ describe 'HierarchyApi' do
 
   # unit tests for search_nodes
   # Search nodes
-  # This endpoint is a really flexible way to ask questions about the hierarchy. for example:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Module`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=department%2Fdep101`\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=module%2Fabf203&amp;filter[nodeType]=Department` # &lt;= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Module&amp;filter[ancestor]=department%2FDEP101&amp;filter[hasAssets]=true&amp;filter[assetType]=List`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Module&amp;filter[hasAssets]=false&amp;filter[assetType]=List`\n\n###### Find all nodes of type time period valid during 2015 that have no list assets. Note a node&#39;s valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=TimePeriod&amp;filter[hasAssets]=false&amp;filter[assetType]=List&amp;filter[from]=20150101&amp;filter[to]=20151231`\n
+  # This endpoint is a really flexible way to ask questions about the hierarchy. for example:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&amp;filter[nodeType]=Departments` # &lt;= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&amp;filter[ancestor]=departments%2FDEP101&amp;filter[hasAssets]=true&amp;filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node&#39;s valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[from]=20150101&amp;filter[to]=20151231`\n
   # @param namespace_inc_global identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call.
   # @param [Hash] opts the optional parameters
   # @option opts [Float] :offset index to start result set from
@@ -256,7 +256,7 @@ describe 'HierarchyApi' do
   # @param namespace identifier namespacing the blueprint.
   # @param id id identifying a domain model
   # @param body node
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @return [NodeBody]
   describe 'update_node test' do

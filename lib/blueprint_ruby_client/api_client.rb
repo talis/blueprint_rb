@@ -86,9 +86,7 @@ module BlueprintClient
       query_params = opts[:query_params] || {}
       form_params = opts[:form_params] || {}
 
-      
       update_params_for_auth! header_params, query_params, opts[:auth_names]
-      
 
       req_opts = {
         :method => http_method,
