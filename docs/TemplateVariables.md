@@ -1,8 +1,9 @@
-# BlueprintClient::AssetAttributes
+# BlueprintClient::TemplateVariables
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | **Object** |  | [optional] 
+**field** | **String** |  | 
+**data** | **String** |  | 
 
 

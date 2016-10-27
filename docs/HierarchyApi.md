@@ -54,7 +54,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace_inc_global** | **String**| identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call. | 
+ **namespace_inc_global** | **String**| identifier namespacing the blueprint. &#x60;global&#x60; is a special namespace which references data from all blueprints in the call. | 
  **body** | [**NodeBody**](NodeBody.md)| node | 
 
 ### Return type
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 
 
-Send operations to modify nodes in bulk, to be applied/rejected as a single transaction.\nFormat will be:\n\n  OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS\n
+Send operations to modify nodes in bulk, to be applied/rejected as a single transaction. Format will be:    OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS 
 
 ### Example
 ```ruby
@@ -145,7 +145,7 @@ namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
 id = "id_example" # String | id identifying a domain model
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 
 begin
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **String**| identifier namespacing the blueprint. | 
  **id** | **String**| id identifying a domain model | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
 
 ### Return type
 
@@ -183,7 +183,7 @@ nil (empty response body)
 
 
 
-Download the blueprint's nodes in CSV format\nFormat will be:\n\n  OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS\n\nOLD NODE TYPE and OLD NODE ID are left intentionally blank to allow direct upload of the output back into the bulk importer\n
+Download the blueprint's nodes in CSV format Format will be:    OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS  OLD NODE TYPE and OLD NODE ID are left intentionally blank to allow direct upload of the output back into the bulk importer 
 
 ### Example
 ```ruby
@@ -233,7 +233,7 @@ nil (empty response body)
 
 Get ancestor nodes
 
-A proxy for finding ancestors of a given node, equivalent to\n`/1/abc/nodes?filter[descendant]=department%2Fdep101`\n
+A proxy for finding ancestors of a given node, equivalent to `/1/abc/nodes?filter[descendant]=department%2Fdep101` 
 
 ### Example
 ```ruby
@@ -251,7 +251,7 @@ id = "id_example" # String | id identifying a domain model
 
 namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 opts = { 
   offset: 3.4, # Float | index to start result set from
@@ -273,9 +273,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| id identifying a domain model | 
  **namespace** | **String**| identifier namespacing the blueprint. | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
- **offset** | [**Float**](.md)| index to start result set from | [optional] 
- **limit** | [**Float**](.md)| number of records to return | [optional] 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
+ **offset** | **Float**| index to start result set from | [optional] 
+ **limit** | **Float**| number of records to return | [optional] 
 
 ### Return type
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 Get child nodes
 
-A proxy for finding children of a given node, equivalent to\n`/1/abc/nodes?filter[parent]=department%2Fdep101`\n
+A proxy for finding children of a given node, equivalent to `/1/abc/nodes?filter[parent]=department%2Fdep101` 
 
 ### Example
 ```ruby
@@ -315,7 +315,7 @@ id = "id_example" # String | id identifying a domain model
 
 namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 opts = { 
   offset: 3.4, # Float | index to start result set from
@@ -337,9 +337,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| id identifying a domain model | 
  **namespace** | **String**| identifier namespacing the blueprint. | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
- **offset** | [**Float**](.md)| index to start result set from | [optional] 
- **limit** | [**Float**](.md)| number of records to return | [optional] 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
+ **offset** | **Float**| index to start result set from | [optional] 
+ **limit** | **Float**| number of records to return | [optional] 
 
 ### Return type
 
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 
 Get descendant nodes
 
-A proxy for finding descendants of a given node, equivalent to\n`/1/abc/nodes?filter[ancestor]=department%2Fdep101`\n
+A proxy for finding descendants of a given node, equivalent to `/1/abc/nodes?filter[ancestor]=department%2Fdep101` 
 
 ### Example
 ```ruby
@@ -379,7 +379,7 @@ id = "id_example" # String | id identifying a domain model
 
 namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 opts = { 
   offset: 3.4, # Float | index to start result set from
@@ -401,9 +401,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| id identifying a domain model | 
  **namespace** | **String**| identifier namespacing the blueprint. | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
- **offset** | [**Float**](.md)| index to start result set from | [optional] 
- **limit** | [**Float**](.md)| number of records to return | [optional] 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
+ **offset** | **Float**| index to start result set from | [optional] 
+ **limit** | **Float**| number of records to return | [optional] 
 
 ### Return type
 
@@ -443,7 +443,7 @@ namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
 id = "id_example" # String | id identifying a domain model
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 opts = { 
   include: ["include_example"] # Array<String> | comma separated list of elements to hydrate. Can include children, parents, and/or assets
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **String**| identifier namespacing the blueprint. | 
  **id** | **String**| id identifying a domain model | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, and/or assets | [optional] 
 
 ### Return type
@@ -487,7 +487,7 @@ Name | Type | Description  | Notes
 
 Get parent nodes
 
-A proxy for finding parents of a given node, equivalent to\n`/1/abc/nodes?filter[child]=department%2Fdep101`\n
+A proxy for finding parents of a given node, equivalent to `/1/abc/nodes?filter[child]=department%2Fdep101` 
 
 ### Example
 ```ruby
@@ -505,7 +505,7 @@ id = "id_example" # String | id identifying a domain model
 
 namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 opts = { 
   offset: 3.4, # Float | index to start result set from
@@ -527,9 +527,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| id identifying a domain model | 
  **namespace** | **String**| identifier namespacing the blueprint. | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
- **offset** | [**Float**](.md)| index to start result set from | [optional] 
- **limit** | [**Float**](.md)| number of records to return | [optional] 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
+ **offset** | **Float**| index to start result set from | [optional] 
+ **limit** | **Float**| number of records to return | [optional] 
 
 ### Return type
 
@@ -571,7 +571,7 @@ id = "id_example" # String | id identifying a domain model
 
 body = BlueprintClient::NodeBody.new # NodeBody | node
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 
 begin
@@ -590,7 +590,7 @@ Name | Type | Description  | Notes
  **namespace** | **String**| identifier namespacing the blueprint. | 
  **id** | **String**| id identifying a domain model | 
  **body** | [**NodeBody**](NodeBody.md)| node | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
 
 ### Return type
 
@@ -612,7 +612,7 @@ Name | Type | Description  | Notes
 
 Search nodes
 
-This endpoint is a really flexible way to ask questions about the hierarchy. for example:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Module`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=department%2Fdep101`\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=module%2Fabf203&filter[nodeType]=Department` # <= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Module&filter[ancestor]=department%2FDEP101&filter[hasAssets]=true&filter[assetType]=List`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Module&filter[hasAssets]=false&filter[assetType]=List`\n\n###### Find all nodes of type time period valid during 2015 that have no list assets. Note a node's valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=TimePeriod&filter[hasAssets]=false&filter[assetType]=List&filter[from]=20150101&filter[to]=20151231`\n
+This endpoint is a really flexible way to ask questions about the hierarchy. for example:  ###### Find all nodes for abc: `/1/abc/nodes`  ###### Find all modules for abc: `/1/abc/nodes?filter[nodeType]=Modules`  ###### Find all nodes that are descendants of DEP101: `/1/abc/nodes?filter[descendant]=departments%2Fdep101`  ###### Find all Departments that are ancestors of ABF203: `/1/abc/nodes?filter[descendant]=modules%2Fabf203&filter[nodeType]=Departments` # <= case insensitive  ###### Find all nodes with list assets that are descendants of DEP101 for abc: `/1/abc/nodes?filter[nodeType]=Modules&filter[ancestor]=departments%2FDEP101&filter[hasAssets]=true&filter[assetType]=Lists`  ###### Globally, find all modules that have no list assets `/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[assetType]=Lists`  ###### Find all nodes of type modules during 2015 that have no assets. Note a node's valid_from/valid_to just need to overlap from/to to qualify `/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[from]=20150101&filter[to]=20151231` 
 
 ### Example
 ```ruby
@@ -661,9 +661,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace_inc_global** | **String**| identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call. | 
- **offset** | [**Float**](.md)| index to start result set from | [optional] 
- **limit** | [**Float**](.md)| number of records to return | [optional] 
+ **namespace_inc_global** | **String**| identifier namespacing the blueprint. &#x60;global&#x60; is a special namespace which references data from all blueprints in the call. | 
+ **offset** | **Float**| index to start result set from | [optional] 
+ **limit** | **Float**| number of records to return | [optional] 
  **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, and/or assets | [optional] 
  **filter_node_type** | [**Array&lt;String&gt;**](String.md)| type of nodes to return | [optional] 
  **filter_child** | [**Array&lt;String&gt;**](String.md)| limit to nodes with children matching type/code | [optional] 
@@ -720,7 +720,7 @@ id = "id_example" # String | id identifying a domain model
 
 body = BlueprintClient::NodeBody.new # NodeBody | node
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 
 begin
@@ -738,7 +738,7 @@ Name | Type | Description  | Notes
  **namespace** | **String**| identifier namespacing the blueprint. | 
  **id** | **String**| id identifying a domain model | 
  **body** | [**NodeBody**](NodeBody.md)| node | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
 
 ### Return type
 

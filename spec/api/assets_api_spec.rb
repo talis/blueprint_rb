@@ -36,9 +36,9 @@ describe 'AssetsApi' do
   # 
   # Add an asset to the node.  Body must be empty.  Will upsert the asset if it doesn&#39;t exist
   # @param namespace identifier namespacing the blueprint.
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param id id identifying a domain model
-  # @param asset_type Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
   # @param asset_id id of an asset
   # @param [Hash] opts the optional parameters
   # @return [AssetBody]
@@ -57,7 +57,7 @@ describe 'AssetsApi' do
   # Delete an Asset
   # @param namespace identifier namespacing the blueprint.
   # @param asset_id id of an asset
-  # @param asset_type Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'delete_asset test' do
@@ -74,7 +74,7 @@ describe 'AssetsApi' do
   # 
   # Get details of a given asset
   # @param namespace identifier namespacing the blueprint.
-  # @param asset_type Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
   # @param asset_id id of an asset
   # @param [Hash] opts the optional parameters
   # @return [AssetBody]
@@ -92,7 +92,7 @@ describe 'AssetsApi' do
   # 
   # Get for assets in the relevant node
   # @param namespace identifier namespacing the blueprint.
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param id id identifying a domain model
   # @param [Hash] opts the optional parameters
   # @option opts [Array<String>] :filter_asset_type type of asset to return
@@ -113,9 +113,9 @@ describe 'AssetsApi' do
   # 
   # Remove an asset from the relevant node
   # @param namespace identifier namespacing the blueprint.
-  # @param type Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param id id identifying a domain model
-  # @param asset_type Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
   # @param asset_id id of an asset
   # @param [Hash] opts the optional parameters
   # @return [nil]
@@ -131,10 +131,10 @@ describe 'AssetsApi' do
 
   # unit tests for replace_asset
   # Replaces the Asset with the data sent in the body
-  # Wholesale replacement of Asset data: if you were to PUT to:\n  /1/{namespace}/assets/sometype/someid\n\nwith a body of:\n  { type: \&quot;someothertype\&quot;, id: \&quot;someotherid\&quot; }\n\nIt would change the Asset&#39;s path to:\n  /1/{namespace}/assets/someothertype/someotherid\n\nand\n  /1/{namespace}/assets/sometype/someid\nwould return a 404.\nIt would also update the assets associated with any node.\n
+  # Wholesale replacement of Asset data: if you were to PUT to:   /1/{namespace}/assets/sometype/someid  with a body of:   { type: \&quot;someothertype\&quot;, id: \&quot;someotherid\&quot; }  It would change the Asset&#39;s path to:   /1/{namespace}/assets/someothertype/someotherid  and   /1/{namespace}/assets/sometype/someid would return a 404. It would also update the assets associated with any node. 
   # @param namespace identifier namespacing the blueprint.
   # @param asset_id id of an asset
-  # @param asset_type Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals
+  # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @option opts [AssetBody] :body asset
   # @return [AssetBody]

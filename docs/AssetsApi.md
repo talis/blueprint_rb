@@ -33,11 +33,11 @@ api_instance = BlueprintClient::AssetsApi.new
 
 namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 id = "id_example" # String | id identifying a domain model
 
-asset_type = "asset_type_example" # String | Plural form of asset type (adds an 's' to the end of the type) todo - allow configuration of plurals
+asset_type = "asset_type_example" # String | subtype of Asset, e.g. 'textbooks', 'digitisations', etc.
 
 asset_id = "asset_id_example" # String | id of an asset
 
@@ -55,9 +55,9 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **String**| identifier namespacing the blueprint. | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **id** | **String**| id identifying a domain model | 
- **asset_type** | **String**| Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
  **asset_id** | **String**| id of an asset | 
 
 ### Return type
@@ -98,7 +98,7 @@ namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
 asset_id = "asset_id_example" # String | id of an asset
 
-asset_type = "asset_type_example" # String | Plural form of asset type (adds an 's' to the end of the type) todo - allow configuration of plurals
+asset_type = "asset_type_example" # String | subtype of Asset, e.g. 'textbooks', 'digitisations', etc.
 
 
 begin
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **String**| identifier namespacing the blueprint. | 
  **asset_id** | **String**| id of an asset | 
- **asset_type** | **String**| Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
 
 ### Return type
 
@@ -152,7 +152,7 @@ api_instance = BlueprintClient::AssetsApi.new
 
 namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
-asset_type = "asset_type_example" # String | Plural form of asset type (adds an 's' to the end of the type) todo - allow configuration of plurals
+asset_type = "asset_type_example" # String | subtype of Asset, e.g. 'textbooks', 'digitisations', etc.
 
 asset_id = "asset_id_example" # String | id of an asset
 
@@ -171,7 +171,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **String**| identifier namespacing the blueprint. | 
- **asset_type** | **String**| Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
  **asset_id** | **String**| id of an asset | 
 
 ### Return type
@@ -210,7 +210,7 @@ api_instance = BlueprintClient::AssetsApi.new
 
 namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 id = "id_example" # String | id identifying a domain model
 
@@ -233,11 +233,11 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **String**| identifier namespacing the blueprint. | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **id** | **String**| id identifying a domain model | 
  **filter_asset_type** | [**Array&lt;String&gt;**](String.md)| type of asset to return | [optional] 
- **offset** | [**Float**](.md)| index to start result set from | [optional] 
- **limit** | [**Float**](.md)| number of records to return | [optional] 
+ **offset** | **Float**| index to start result set from | [optional] 
+ **limit** | **Float**| number of records to return | [optional] 
 
 ### Return type
 
@@ -275,11 +275,11 @@ api_instance = BlueprintClient::AssetsApi.new
 
 namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
-type = "type_example" # String | Plural form of node type (adds an 's' to the end of the type) todo - allow configuration of plurals
+type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 id = "id_example" # String | id identifying a domain model
 
-asset_type = "asset_type_example" # String | Plural form of asset type (adds an 's' to the end of the type) todo - allow configuration of plurals
+asset_type = "asset_type_example" # String | subtype of Asset, e.g. 'textbooks', 'digitisations', etc.
 
 asset_id = "asset_id_example" # String | id of an asset
 
@@ -296,9 +296,9 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **String**| identifier namespacing the blueprint. | 
- **type** | **String**| Plural form of node type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **id** | **String**| id identifying a domain model | 
- **asset_type** | **String**| Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
  **asset_id** | **String**| id of an asset | 
 
 ### Return type
@@ -321,7 +321,7 @@ nil (empty response body)
 
 Replaces the Asset with the data sent in the body
 
-Wholesale replacement of Asset data: if you were to PUT to:\n  /1/{namespace}/assets/sometype/someid\n\nwith a body of:\n  { type: \"someothertype\", id: \"someotherid\" }\n\nIt would change the Asset's path to:\n  /1/{namespace}/assets/someothertype/someotherid\n\nand\n  /1/{namespace}/assets/sometype/someid\nwould return a 404.\nIt would also update the assets associated with any node.\n
+Wholesale replacement of Asset data: if you were to PUT to:   /1/{namespace}/assets/sometype/someid  with a body of:   { type: \"someothertype\", id: \"someotherid\" }  It would change the Asset's path to:   /1/{namespace}/assets/someothertype/someotherid  and   /1/{namespace}/assets/sometype/someid would return a 404. It would also update the assets associated with any node. 
 
 ### Example
 ```ruby
@@ -339,7 +339,7 @@ namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
 asset_id = "asset_id_example" # String | id of an asset
 
-asset_type = "asset_type_example" # String | Plural form of asset type (adds an 's' to the end of the type) todo - allow configuration of plurals
+asset_type = "asset_type_example" # String | subtype of Asset, e.g. 'textbooks', 'digitisations', etc.
 
 opts = { 
   body: BlueprintClient::AssetBody.new # AssetBody | asset
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **String**| identifier namespacing the blueprint. | 
  **asset_id** | **String**| id of an asset | 
- **asset_type** | **String**| Plural form of asset type (adds an &#39;s&#39; to the end of the type) todo - allow configuration of plurals | 
+ **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
  **body** | [**AssetBody**](AssetBody.md)| asset | [optional] 
 
 ### Return type

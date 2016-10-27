@@ -30,41 +30,37 @@ module BlueprintClient
     # Additional identifiers linked to the external domain of the hierarchy, for example JACS code. Allows comparisons between hierarchies.
     attr_accessor :domain_ids
 
+    # Reminder date for redemption period nodes, should be an ISO8601 date. Drop if we can get additionalProperties working.
+    attr_accessor :reminder_date
+
+    # Deadline date for redemption period nodes, should be an ISO8601 date. Drop if we can get additionalProperties working.
+    attr_accessor :deadline
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        
         :'title' => :'title',
-        
         :'description' => :'description',
-        
         :'valid_from' => :'valid_from',
-        
         :'valid_to' => :'valid_to',
-        
         :'student_numbers' => :'studentNumbers',
-        
-        :'domain_ids' => :'domain_ids'
-        
+        :'domain_ids' => :'domain_ids',
+        :'reminder_date' => :'reminder_date',
+        :'deadline' => :'deadline'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        
         :'title' => :'String',
-        
         :'description' => :'String',
-        
         :'valid_from' => :'Date',
-        
         :'valid_to' => :'Date',
-        
         :'student_numbers' => :'Float',
-        
-        :'domain_ids' => :'Array<String>'
-        
+        :'domain_ids' => :'Array<String>',
+        :'reminder_date' => :'Date',
+        :'deadline' => :'Date'
       }
     end
 
@@ -76,137 +72,56 @@ module BlueprintClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      
       if attributes.has_key?(:'title')
-        
-        
         self.title = attributes[:'title']
-        
-      
       end
 
-      
       if attributes.has_key?(:'description')
-        
-        
         self.description = attributes[:'description']
-        
-      
       end
 
-      
       if attributes.has_key?(:'valid_from')
-        
-        
         self.valid_from = attributes[:'valid_from']
-        
-      
       end
 
-      
       if attributes.has_key?(:'valid_to')
-        
-        
         self.valid_to = attributes[:'valid_to']
-        
-      
       end
 
-      
       if attributes.has_key?(:'studentNumbers')
-        
-        
         self.student_numbers = attributes[:'studentNumbers']
-        
-      
       end
 
-      
       if attributes.has_key?(:'domain_ids')
-        
         if (value = attributes[:'domain_ids']).is_a?(Array)
           self.domain_ids = value
         end
-        
-        
-      
       end
 
-      
+      if attributes.has_key?(:'reminder_date')
+        self.reminder_date = attributes[:'reminder_date']
+      end
+
+      if attributes.has_key?(:'deadline')
+        self.deadline = attributes[:'deadline']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      
-      
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
     end
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared 
+    # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
@@ -215,11 +130,13 @@ module BlueprintClient
           valid_from == o.valid_from &&
           valid_to == o.valid_to &&
           student_numbers == o.student_numbers &&
-          domain_ids == o.domain_ids
+          domain_ids == o.domain_ids &&
+          reminder_date == o.reminder_date &&
+          deadline == o.deadline
     end
 
     # @see the `==` method
-    # @param [Object] Object to be compared 
+    # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
@@ -227,7 +144,7 @@ module BlueprintClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [title, description, valid_from, valid_to, student_numbers, domain_ids].hash
+      [title, description, valid_from, valid_to, student_numbers, domain_ids, reminder_date, deadline].hash
     end
 
     # Builds the object from hash
