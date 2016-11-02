@@ -73,7 +73,7 @@ module BlueprintClient
         invalid_properties.push("invalid value for 'field', field cannot be nil.")
       end
 
-      if @field !~ Regexp.new(^.+$)
+      if @field !~ Regexp.new(/^.+$/)
         invalid_properties.push("invalid value for 'field', must conform to the pattern ^.+$.")
       end
 
@@ -81,7 +81,7 @@ module BlueprintClient
         invalid_properties.push("invalid value for 'data', data cannot be nil.")
       end
 
-      if @data !~ Regexp.new(^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$)
+      if @data !~ Regexp.new(/^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$/)
         invalid_properties.push("invalid value for 'data', must conform to the pattern ^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$.")
       end
 
@@ -92,9 +92,9 @@ module BlueprintClient
     # @return true if the model is valid
     def valid?
       return false if @field.nil?
-      return false if @field !~ Regexp.new(^.+$)
+      return false if @field !~ Regexp.new(/^.+$/)
       return false if @data.nil?
-      return false if @data !~ Regexp.new(^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$)
+      return false if @data !~ Regexp.new(/^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$/)
       return true
     end
 
@@ -105,7 +105,7 @@ module BlueprintClient
         fail ArgumentError, "field cannot be nil"
       end
 
-      if field !~ Regexp.new(^.+$)
+      if field !~ Regexp.new(/^.+$/)
         fail ArgumentError, "invalid value for 'field', must conform to the pattern ^.+$."
       end
 
@@ -119,7 +119,7 @@ module BlueprintClient
         fail ArgumentError, "data cannot be nil"
       end
 
-      if data !~ Regexp.new(^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$)
+      if data !~ Regexp.new(/^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$/)
         fail ArgumentError, "invalid value for 'data', must conform to the pattern ^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$."
       end
 

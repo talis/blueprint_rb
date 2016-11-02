@@ -75,7 +75,7 @@ module BlueprintClient
         invalid_properties.push("invalid value for 'redirect_uri', redirect_uri cannot be nil.")
       end
 
-      if @redirect_uri !~ Regexp.new(^.+$)
+      if @redirect_uri !~ Regexp.new(/^.+$/)
         invalid_properties.push("invalid value for 'redirect_uri', must conform to the pattern ^.+$.")
       end
 
@@ -86,7 +86,7 @@ module BlueprintClient
     # @return true if the model is valid
     def valid?
       return false if @redirect_uri.nil?
-      return false if @redirect_uri !~ Regexp.new(^.+$)
+      return false if @redirect_uri !~ Regexp.new(/^.+$/)
       return true
     end
 
@@ -97,7 +97,7 @@ module BlueprintClient
         fail ArgumentError, "redirect_uri cannot be nil"
       end
 
-      if redirect_uri !~ Regexp.new(^.+$)
+      if redirect_uri !~ Regexp.new(/^.+$/)
         fail ArgumentError, "invalid value for 'redirect_uri', must conform to the pattern ^.+$."
       end
 
