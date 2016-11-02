@@ -14,23 +14,29 @@ require 'date'
 
 module BlueprintClient
   class IntegrationTransformExample
-    attr_accessor :input
-
     attr_accessor :output
+
+    attr_accessor :input
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'input' => :'input',
-        :'output' => :'output'
+        
+        :'output' => :'output',
+        
+        :'input' => :'input'
+        
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'input' => :'Object',
-        :'output' => :'Object'
+        
+        :'output' => :'Object',
+        
+        :'input' => :'Object'
+        
       }
     end
 
@@ -42,39 +48,73 @@ module BlueprintClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'input')
-        self.input = attributes[:'input']
-      end
-
+      
       if attributes.has_key?(:'output')
+        
+        
         self.output = attributes[:'output']
+        
+      
       end
 
+      
+      if attributes.has_key?(:'input')
+        
+        
+        self.input = attributes[:'input']
+        
+      
+      end
+
+      
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      
+      
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      
+      
+      
+      
+      
+      
       if @input.nil?
         return false
       end
 
+      
+      
+      
+      
     end
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          input == o.input &&
-          output == o.output
+          output == o.output &&
+          input == o.input
     end
 
     # @see the `==` method
@@ -86,7 +126,7 @@ module BlueprintClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [input, output].hash
+      [output, input].hash
     end
 
     # Builds the object from hash

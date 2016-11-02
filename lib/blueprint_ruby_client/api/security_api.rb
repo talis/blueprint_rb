@@ -37,6 +37,7 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: SecurityApi.get_public_certificate ..."
       end
+      
       # resource path
       local_var_path = "/keys/public".sub('{format}','json')
 
@@ -59,7 +60,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = []
+      
+      auth_names = []
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,

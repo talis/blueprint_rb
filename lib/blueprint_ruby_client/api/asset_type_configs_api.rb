@@ -41,10 +41,23 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AssetTypeConfigsApi.get ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetTypeConfigsApi.get" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_type' is set
       fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetTypeConfigsApi.get" if asset_type.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/assets/{assetType}/templates".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'assetType' + '}', asset_type.to_s)
 
@@ -67,7 +80,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
