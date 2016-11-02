@@ -38,3 +38,4 @@ Gemfile.lock
 # Swagger code generator
 *.jar
 git_push.sh
+.idea/*

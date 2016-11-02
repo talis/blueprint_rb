@@ -117,10 +117,12 @@ module {{moduleName}}{{#models}}{{#model}}{{#description}}
 
       {{/required}}
       {{#isEnum}}
+      {{#isNotContainer}}
       allowed_values = [{{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}]
       if @{{{name}}} && !allowed_values.include?(@{{{name}}})
         return false
       end
+      {{/isNotContainer}}
       {{/isEnum}}
       {{#hasValidation}}
       {{#minLength}}
