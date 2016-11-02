@@ -29,7 +29,7 @@ Add a node
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -83,7 +83,7 @@ Send operations to modify nodes in bulk, to be applied/rejected as a single tran
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -133,7 +133,7 @@ Delete a node
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -189,7 +189,7 @@ Download the blueprint's nodes in CSV format Format will be:    OLD NODE TYPE, O
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -239,7 +239,7 @@ A proxy for finding ancestors of a given node, equivalent to `/1/abc/nodes?filte
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -303,7 +303,7 @@ A proxy for finding children of a given node, equivalent to `/1/abc/nodes?filter
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -367,7 +367,7 @@ A proxy for finding descendants of a given node, equivalent to `/1/abc/nodes?fil
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -431,7 +431,7 @@ Get details of a given node
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -493,7 +493,7 @@ A proxy for finding parents of a given node, equivalent to `/1/abc/nodes?filter[
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -557,7 +557,7 @@ Replaces the node with the data sent in the body
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -618,7 +618,7 @@ This endpoint is a really flexible way to ask questions about the hierarchy. for
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -706,7 +706,7 @@ Perform a partial update of a node
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'

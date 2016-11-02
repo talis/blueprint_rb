@@ -22,7 +22,7 @@ Add an integration
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -76,7 +76,7 @@ Delete an integration
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -132,7 +132,7 @@ Get details of a given integration
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -278,7 +278,7 @@ Replace an integration
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'

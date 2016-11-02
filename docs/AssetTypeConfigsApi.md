@@ -18,7 +18,7 @@ get a template for a given asset type
 ```ruby
 # load the gem
 require 'blueprint_ruby_client'
-# setup authorization 
+# setup authorization
 BlueprintClient.configure do |config|
   # Configure OAuth2 access token for authorization: oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
