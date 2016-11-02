@@ -21,16 +21,22 @@ module BlueprintClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        
         :'field' => :'field',
+        
         :'data' => :'data'
+        
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        
         :'field' => :'String',
+        
         :'data' => :'String'
+        
       }
     end
 
@@ -42,72 +48,71 @@ module BlueprintClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
+      
       if attributes.has_key?(:'field')
+        
+        
         self.field = attributes[:'field']
+        
+      
       end
 
+      
       if attributes.has_key?(:'data')
+        
+        
         self.data = attributes[:'data']
+        
+      
       end
 
+      
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      
+      
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      
+      
       if @field.nil?
         return false
       end
 
-      if @field !~ Regexp.new(/^.+$/)
-        return false
-      end
-
+      
+      
+      
+      
+      
       if @data.nil?
         return false
       end
 
-      if @data !~ Regexp.new(/^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$/)
-        return false
-      end
-
+      
+      
+      
+      
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] field Value to be assigned
-    def field=(field)
-      if field.nil?
-        fail ArgumentError, "field cannot be nil"
-      end
-
-      if @field !~ Regexp.new(/^.+$/)
-        fail ArgumentError, "invalid value for 'field', must conform to the pattern ^.+$."
-      end
-
-      @field = field
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] data Value to be assigned
-    def data=(data)
-      if data.nil?
-        fail ArgumentError, "data cannot be nil"
-      end
-
-      if @data !~ Regexp.new(/^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$/)
-        fail ArgumentError, "invalid value for 'data', must conform to the pattern ^(assets\\.(id|type|attributes\\..+)|(nodes\\.(id|type|attributes\\..+))|(integrations\\..+))$."
-      end
-
-      @data = data
-    end
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)

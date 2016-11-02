@@ -22,7 +22,7 @@ module BlueprintClient
 
     # 
     # Add a node
-    # @param namespace_inc_global identifier namespacing the blueprint. &#x60;global&#x60; is a special namespace which references data from all blueprints in the call.
+    # @param namespace_inc_global identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call.
     # @param body node
     # @param [Hash] opts the optional parameters
     # @return [NodeBody]
@@ -33,7 +33,7 @@ module BlueprintClient
 
     # 
     # Add a node
-    # @param namespace_inc_global identifier namespacing the blueprint. &#x60;global&#x60; is a special namespace which references data from all blueprints in the call.
+    # @param namespace_inc_global identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call.
     # @param body node
     # @param [Hash] opts the optional parameters
     # @return [Array<(NodeBody, Fixnum, Hash)>] NodeBody data, response status code and response headers
@@ -41,10 +41,23 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.add_node ..."
       end
+      
+      
       # verify the required parameter 'namespace_inc_global' is set
       fail ArgumentError, "Missing the required parameter 'namespace_inc_global' when calling HierarchyApi.add_node" if namespace_inc_global.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'body' is set
       fail ArgumentError, "Missing the required parameter 'body' when calling HierarchyApi.add_node" if body.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespaceIncGlobal}/nodes".sub('{format}','json').sub('{' + 'namespaceIncGlobal' + '}', namespace_inc_global.to_s)
 
@@ -67,6 +80,7 @@ module BlueprintClient
 
       # http body (model)
       post_body = @api_client.object_to_http_body(body)
+      
       auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -82,7 +96,7 @@ module BlueprintClient
     end
 
     # 
-    # Send operations to modify nodes in bulk, to be applied/rejected as a single transaction. Format will be:    OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS 
+    # Send operations to modify nodes in bulk, to be applied/rejected as a single transaction.\nFormat will be:\n\n  OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS\n
     # @param namespace identifier namespacing the blueprint.
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -92,7 +106,7 @@ module BlueprintClient
     end
 
     # 
-    # Send operations to modify nodes in bulk, to be applied/rejected as a single transaction. Format will be:    OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS 
+    # Send operations to modify nodes in bulk, to be applied/rejected as a single transaction.\nFormat will be:\n\n  OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS\n
     # @param namespace identifier namespacing the blueprint.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -100,8 +114,15 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.bulk_upload ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.bulk_upload" if namespace.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes.csv".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s)
 
@@ -124,7 +145,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -160,12 +182,31 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.delete_node ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.delete_node" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.delete_node" if id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.delete_node" if type.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'type' + '}', type.to_s)
 
@@ -188,7 +229,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -202,7 +244,7 @@ module BlueprintClient
     end
 
     # 
-    # Download the blueprint's nodes in CSV format Format will be:    OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS  OLD NODE TYPE and OLD NODE ID are left intentionally blank to allow direct upload of the output back into the bulk importer 
+    # Download the blueprint's nodes in CSV format\nFormat will be:\n\n  OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS\n\nOLD NODE TYPE and OLD NODE ID are left intentionally blank to allow direct upload of the output back into the bulk importer\n
     # @param namespace identifier namespacing the blueprint.
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -212,7 +254,7 @@ module BlueprintClient
     end
 
     # 
-    # Download the blueprint&#39;s nodes in CSV format Format will be:    OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS  OLD NODE TYPE and OLD NODE ID are left intentionally blank to allow direct upload of the output back into the bulk importer 
+    # Download the blueprint&#39;s nodes in CSV format\nFormat will be:\n\n  OLD NODE TYPE, OLD NODE ID, NEW NODE TYPE, NEW NODE ID, PARENTS, TITLE, DESCRIPTION, DOMAIN IDS, STUDENT NUMBERS\n\nOLD NODE TYPE and OLD NODE ID are left intentionally blank to allow direct upload of the output back into the bulk importer\n
     # @param namespace identifier namespacing the blueprint.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -220,8 +262,15 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.export_hierarchy ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.export_hierarchy" if namespace.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes.csv".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s)
 
@@ -244,7 +293,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -258,7 +308,7 @@ module BlueprintClient
     end
 
     # Get ancestor nodes
-    # A proxy for finding ancestors of a given node, equivalent to `/1/abc/nodes?filter[descendant]=department%2Fdep101` 
+    # A proxy for finding ancestors of a given node, equivalent to\n`/1/abc/nodes?filter[descendant]=department%2Fdep101`\n
     # @param id id identifying a domain model
     # @param namespace identifier namespacing the blueprint.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
@@ -272,7 +322,7 @@ module BlueprintClient
     end
 
     # Get ancestor nodes
-    # A proxy for finding ancestors of a given node, equivalent to &#x60;/1/abc/nodes?filter[descendant]&#x3D;department%2Fdep101&#x60; 
+    # A proxy for finding ancestors of a given node, equivalent to\n`/1/abc/nodes?filter[descendant]=department%2Fdep101`\n
     # @param id id identifying a domain model
     # @param namespace identifier namespacing the blueprint.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
@@ -284,12 +334,43 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.get_ancestors ..."
       end
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.get_ancestors" if id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.get_ancestors" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.get_ancestors" if type.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/ancestors".sub('{format}','json').sub('{' + 'id' + '}', id.to_s).sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s)
 
@@ -314,7 +395,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -329,7 +411,7 @@ module BlueprintClient
     end
 
     # Get child nodes
-    # A proxy for finding children of a given node, equivalent to `/1/abc/nodes?filter[parent]=department%2Fdep101` 
+    # A proxy for finding children of a given node, equivalent to\n`/1/abc/nodes?filter[parent]=department%2Fdep101`\n
     # @param id id identifying a domain model
     # @param namespace identifier namespacing the blueprint.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
@@ -343,7 +425,7 @@ module BlueprintClient
     end
 
     # Get child nodes
-    # A proxy for finding children of a given node, equivalent to &#x60;/1/abc/nodes?filter[parent]&#x3D;department%2Fdep101&#x60; 
+    # A proxy for finding children of a given node, equivalent to\n`/1/abc/nodes?filter[parent]=department%2Fdep101`\n
     # @param id id identifying a domain model
     # @param namespace identifier namespacing the blueprint.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
@@ -355,12 +437,43 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.get_children ..."
       end
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.get_children" if id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.get_children" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.get_children" if type.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/children".sub('{format}','json').sub('{' + 'id' + '}', id.to_s).sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s)
 
@@ -385,7 +498,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -400,7 +514,7 @@ module BlueprintClient
     end
 
     # Get descendant nodes
-    # A proxy for finding descendants of a given node, equivalent to `/1/abc/nodes?filter[ancestor]=department%2Fdep101` 
+    # A proxy for finding descendants of a given node, equivalent to\n`/1/abc/nodes?filter[ancestor]=department%2Fdep101`\n
     # @param id id identifying a domain model
     # @param namespace identifier namespacing the blueprint.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
@@ -414,7 +528,7 @@ module BlueprintClient
     end
 
     # Get descendant nodes
-    # A proxy for finding descendants of a given node, equivalent to &#x60;/1/abc/nodes?filter[ancestor]&#x3D;department%2Fdep101&#x60; 
+    # A proxy for finding descendants of a given node, equivalent to\n`/1/abc/nodes?filter[ancestor]=department%2Fdep101`\n
     # @param id id identifying a domain model
     # @param namespace identifier namespacing the blueprint.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
@@ -426,12 +540,43 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.get_descendants ..."
       end
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.get_descendants" if id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.get_descendants" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.get_descendants" if type.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/descendants".sub('{format}','json').sub('{' + 'id' + '}', id.to_s).sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s)
 
@@ -456,7 +601,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -495,15 +641,37 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.get_node ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.get_node" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.get_node" if id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.get_node" if type.nil?
-      if opts[:'include'] && !['children', 'parents', 'assets'].include?(opts[:'include'])
-        fail ArgumentError, 'invalid value for "include", must be one of children, parents, assets'
-      end
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'type' + '}', type.to_s)
 
@@ -527,7 +695,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -542,7 +711,7 @@ module BlueprintClient
     end
 
     # Get parent nodes
-    # A proxy for finding parents of a given node, equivalent to `/1/abc/nodes?filter[child]=department%2Fdep101` 
+    # A proxy for finding parents of a given node, equivalent to\n`/1/abc/nodes?filter[child]=department%2Fdep101`\n
     # @param id id identifying a domain model
     # @param namespace identifier namespacing the blueprint.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
@@ -556,7 +725,7 @@ module BlueprintClient
     end
 
     # Get parent nodes
-    # A proxy for finding parents of a given node, equivalent to &#x60;/1/abc/nodes?filter[child]&#x3D;department%2Fdep101&#x60; 
+    # A proxy for finding parents of a given node, equivalent to\n`/1/abc/nodes?filter[child]=department%2Fdep101`\n
     # @param id id identifying a domain model
     # @param namespace identifier namespacing the blueprint.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
@@ -568,12 +737,43 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.get_parents ..."
       end
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.get_parents" if id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.get_parents" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.get_parents" if type.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/parents".sub('{format}','json').sub('{' + 'id' + '}', id.to_s).sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s)
 
@@ -598,7 +798,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -637,14 +838,39 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.replace_node ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.replace_node" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.replace_node" if id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'body' is set
       fail ArgumentError, "Missing the required parameter 'body' when calling HierarchyApi.replace_node" if body.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.replace_node" if type.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'type' + '}', type.to_s)
 
@@ -667,6 +893,7 @@ module BlueprintClient
 
       # http body (model)
       post_body = @api_client.object_to_http_body(body)
+      
       auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -682,8 +909,8 @@ module BlueprintClient
     end
 
     # Search nodes
-    # This endpoint is a really flexible way to ask questions about the hierarchy. for example:  ###### Find all nodes for abc: `/1/abc/nodes`  ###### Find all modules for abc: `/1/abc/nodes?filter[nodeType]=Modules`  ###### Find all nodes that are descendants of DEP101: `/1/abc/nodes?filter[descendant]=departments%2Fdep101`  ###### Find all Departments that are ancestors of ABF203: `/1/abc/nodes?filter[descendant]=modules%2Fabf203&filter[nodeType]=Departments` # <= case insensitive  ###### Find all nodes with list assets that are descendants of DEP101 for abc: `/1/abc/nodes?filter[nodeType]=Modules&filter[ancestor]=departments%2FDEP101&filter[hasAssets]=true&filter[assetType]=Lists`  ###### Globally, find all modules that have no list assets `/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[assetType]=Lists`  ###### Find all nodes of type modules during 2015 that have no assets. Note a node's valid_from/valid_to just need to overlap from/to to qualify `/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[from]=20150101&filter[to]=20151231` 
-    # @param namespace_inc_global identifier namespacing the blueprint. &#x60;global&#x60; is a special namespace which references data from all blueprints in the call.
+    # This endpoint is a really flexible way to ask questions about the hierarchy. for example:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&filter[nodeType]=Departments` # <= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&filter[ancestor]=departments%2FDEP101&filter[hasAssets]=true&filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node's valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[from]=20150101&filter[to]=20151231`\n
+    # @param namespace_inc_global identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call.
     # @param [Hash] opts the optional parameters
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
@@ -709,8 +936,8 @@ module BlueprintClient
     end
 
     # Search nodes
-    # This endpoint is a really flexible way to ask questions about the hierarchy. for example:  ###### Find all nodes for abc: &#x60;/1/abc/nodes&#x60;  ###### Find all modules for abc: &#x60;/1/abc/nodes?filter[nodeType]&#x3D;Modules&#x60;  ###### Find all nodes that are descendants of DEP101: &#x60;/1/abc/nodes?filter[descendant]&#x3D;departments%2Fdep101&#x60;  ###### Find all Departments that are ancestors of ABF203: &#x60;/1/abc/nodes?filter[descendant]&#x3D;modules%2Fabf203&amp;filter[nodeType]&#x3D;Departments&#x60; # &lt;&#x3D; case insensitive  ###### Find all nodes with list assets that are descendants of DEP101 for abc: &#x60;/1/abc/nodes?filter[nodeType]&#x3D;Modules&amp;filter[ancestor]&#x3D;departments%2FDEP101&amp;filter[hasAssets]&#x3D;true&amp;filter[assetType]&#x3D;Lists&#x60;  ###### Globally, find all modules that have no list assets &#x60;/1/global/nodes?filter[nodeType]&#x3D;Modules&amp;filter[hasAssets]&#x3D;false&amp;filter[assetType]&#x3D;Lists&#x60;  ###### Find all nodes of type modules during 2015 that have no assets. Note a node&#39;s valid_from/valid_to just need to overlap from/to to qualify &#x60;/1/global/nodes?filter[nodeType]&#x3D;Modules&amp;filter[hasAssets]&#x3D;false&amp;filter[from]&#x3D;20150101&amp;filter[to]&#x3D;20151231&#x60; 
-    # @param namespace_inc_global identifier namespacing the blueprint. &#x60;global&#x60; is a special namespace which references data from all blueprints in the call.
+    # This endpoint is a really flexible way to ask questions about the hierarchy. for example:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&amp;filter[nodeType]=Departments` # &lt;= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&amp;filter[ancestor]=departments%2FDEP101&amp;filter[hasAssets]=true&amp;filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node&#39;s valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[from]=20150101&amp;filter[to]=20151231`\n
+    # @param namespace_inc_global identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call.
     # @param [Hash] opts the optional parameters
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
@@ -734,11 +961,117 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.search_nodes ..."
       end
+      
+      
       # verify the required parameter 'namespace_inc_global' is set
       fail ArgumentError, "Missing the required parameter 'namespace_inc_global' when calling HierarchyApi.search_nodes" if namespace_inc_global.nil?
-      if opts[:'include'] && !['children', 'parents', 'assets'].include?(opts[:'include'])
-        fail ArgumentError, 'invalid value for "include", must be one of children, parents, assets'
-      end
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespaceIncGlobal}/nodes".sub('{format}','json').sub('{' + 'namespaceIncGlobal' + '}', namespace_inc_global.to_s)
 
@@ -778,7 +1111,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -817,14 +1151,39 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: HierarchyApi.update_node ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling HierarchyApi.update_node" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling HierarchyApi.update_node" if id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'body' is set
       fail ArgumentError, "Missing the required parameter 'body' when calling HierarchyApi.update_node" if body.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling HierarchyApi.update_node" if type.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'type' + '}', type.to_s)
 
@@ -847,6 +1206,7 @@ module BlueprintClient
 
       # http body (model)
       post_body = @api_client.object_to_http_body(body)
+      
       auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path,
         :header_params => header_params,

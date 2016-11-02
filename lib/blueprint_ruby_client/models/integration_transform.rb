@@ -25,20 +25,30 @@ module BlueprintClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        
         :'field' => :'field',
+        
         :'regex' => :'regex',
+        
         :'refs' => :'refs',
+        
         :'example' => :'example'
+        
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        
         :'field' => :'String',
+        
         :'regex' => :'String',
+        
         :'refs' => :'Array<String>',
+        
         :'example' => :'IntegrationTransformExample'
+        
       }
     end
 
@@ -50,46 +60,109 @@ module BlueprintClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
+      
       if attributes.has_key?(:'field')
+        
+        
         self.field = attributes[:'field']
+        
+      
       end
 
+      
       if attributes.has_key?(:'regex')
+        
+        
         self.regex = attributes[:'regex']
+        
+      
       end
 
+      
       if attributes.has_key?(:'refs')
+        
         if (value = attributes[:'refs']).is_a?(Array)
           self.refs = value
         end
+        
+        
+      
       end
 
+      
       if attributes.has_key?(:'example')
+        
+        
         self.example = attributes[:'example']
+        
+      
       end
 
+      
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      
+      
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      
+      
       if @field.nil?
         return false
       end
 
+      
+      
+      
+      
+      
+      
+      
+      
+      
       if @refs.nil?
         return false
       end
 
+      
+      
+      
+      
+      
+      
+      
+      
     end
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)

@@ -25,20 +25,30 @@ module BlueprintClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        
         :'consumer_key' => :'consumer_key',
+        
         :'shared_secret' => :'shared_secret',
+        
         :'taught_unit_type' => :'taught_unit_type',
+        
         :'transforms' => :'transforms'
+        
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        
         :'consumer_key' => :'String',
+        
         :'shared_secret' => :'String',
+        
         :'taught_unit_type' => :'String',
+        
         :'transforms' => :'Array<IntegrationTransform>'
+        
       }
     end
 
@@ -50,50 +60,114 @@ module BlueprintClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
+      
       if attributes.has_key?(:'consumer_key')
+        
+        
         self.consumer_key = attributes[:'consumer_key']
+        
+      
       end
 
+      
       if attributes.has_key?(:'shared_secret')
+        
+        
         self.shared_secret = attributes[:'shared_secret']
+        
+      
       end
 
+      
       if attributes.has_key?(:'taught_unit_type')
+        
+        
         self.taught_unit_type = attributes[:'taught_unit_type']
+        
+      
       end
 
+      
       if attributes.has_key?(:'transforms')
+        
         if (value = attributes[:'transforms']).is_a?(Array)
           self.transforms = value
         end
+        
+        
+      
       end
 
+      
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      
+      
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      
+      
       if @consumer_key.nil?
         return false
       end
 
+      
+      
+      
+      
+      
       if @shared_secret.nil?
         return false
       end
 
+      
+      
+      
+      
+      
+      
+      
+      
+      
       if @transforms.nil?
         return false
       end
 
+      
+      
+      
+      
     end
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)

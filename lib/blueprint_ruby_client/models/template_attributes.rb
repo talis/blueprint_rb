@@ -21,16 +21,22 @@ module BlueprintClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        
         :'redirect_uri' => :'redirect_uri',
+        
         :'template_vars' => :'template_vars'
+        
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        
         :'redirect_uri' => :'String',
+        
         :'template_vars' => :'Array<TemplateVariables>'
+        
       }
     end
 
@@ -42,52 +48,68 @@ module BlueprintClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
+      
       if attributes.has_key?(:'redirect_uri')
+        
+        
         self.redirect_uri = attributes[:'redirect_uri']
+        
+      
       end
 
+      
       if attributes.has_key?(:'template_vars')
+        
         if (value = attributes[:'template_vars']).is_a?(Array)
           self.template_vars = value
         end
+        
+        
+      
       end
 
+      
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      
+      
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      
+      
       if @redirect_uri.nil?
         return false
       end
 
-      if @redirect_uri !~ Regexp.new(/^.+$/)
-        return false
-      end
-
+      
+      
+      
+      
+      
+      
+      
+      
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] redirect_uri Value to be assigned
-    def redirect_uri=(redirect_uri)
-      if redirect_uri.nil?
-        fail ArgumentError, "redirect_uri cannot be nil"
-      end
-
-      if @redirect_uri !~ Regexp.new(/^.+$/)
-        fail ArgumentError, "invalid value for 'redirect_uri', must conform to the pattern ^.+$."
-      end
-
-      @redirect_uri = redirect_uri
-    end
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)

@@ -41,10 +41,23 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: IntegrationsApi.add_integration ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling IntegrationsApi.add_integration" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'body' is set
       fail ArgumentError, "Missing the required parameter 'body' when calling IntegrationsApi.add_integration" if body.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/integrations".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s)
 
@@ -67,6 +80,7 @@ module BlueprintClient
 
       # http body (model)
       post_body = @api_client.object_to_http_body(body)
+      
       auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -104,12 +118,31 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: IntegrationsApi.delete_integration ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling IntegrationsApi.delete_integration" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'integration_id' is set
       fail ArgumentError, "Missing the required parameter 'integration_id' when calling IntegrationsApi.delete_integration" if integration_id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'integration_type' is set
       fail ArgumentError, "Missing the required parameter 'integration_type' when calling IntegrationsApi.delete_integration" if integration_type.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/integrations/{integrationType}/{integrationId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'integrationId' + '}', integration_id.to_s).sub('{' + 'integrationType' + '}', integration_type.to_s)
 
@@ -132,7 +165,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -168,12 +202,31 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: IntegrationsApi.get_integration ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling IntegrationsApi.get_integration" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'integration_type' is set
       fail ArgumentError, "Missing the required parameter 'integration_type' when calling IntegrationsApi.get_integration" if integration_type.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'integration_id' is set
       fail ArgumentError, "Missing the required parameter 'integration_id' when calling IntegrationsApi.get_integration" if integration_id.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/integrations/{integrationType}/{integrationId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'integrationType' + '}', integration_type.to_s).sub('{' + 'integrationId' + '}', integration_id.to_s)
 
@@ -196,7 +249,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -265,34 +319,153 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: IntegrationsApi.namespace_integrations_lti1_integration_id_assets_asset_type_asset_id_post ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling IntegrationsApi.namespace_integrations_lti1_integration_id_assets_asset_type_asset_id_post" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'integration_id' is set
       fail ArgumentError, "Missing the required parameter 'integration_id' when calling IntegrationsApi.namespace_integrations_lti1_integration_id_assets_asset_type_asset_id_post" if integration_id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_type' is set
       fail ArgumentError, "Missing the required parameter 'asset_type' when calling IntegrationsApi.namespace_integrations_lti1_integration_id_assets_asset_type_asset_id_post" if asset_type.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_id' is set
       fail ArgumentError, "Missing the required parameter 'asset_id' when calling IntegrationsApi.namespace_integrations_lti1_integration_id_assets_asset_type_asset_id_post" if asset_id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'lti_message_type' is set
       fail ArgumentError, "Missing the required parameter 'lti_message_type' when calling IntegrationsApi.namespace_integrations_lti1_integration_id_assets_asset_type_asset_id_post" if lti_message_type.nil?
+      
       # verify enum value
       unless ['basic-lti-launch-request'].include?(lti_message_type)
         fail ArgumentError, "invalid value for 'lti_message_type', must be one of basic-lti-launch-request"
       end
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'lti_version' is set
       fail ArgumentError, "Missing the required parameter 'lti_version' when calling IntegrationsApi.namespace_integrations_lti1_integration_id_assets_asset_type_asset_id_post" if lti_version.nil?
+      
       # verify enum value
       unless ['LTI-1p0'].include?(lti_version)
         fail ArgumentError, "invalid value for 'lti_version', must be one of LTI-1p0"
       end
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'resource_link_id' is set
       fail ArgumentError, "Missing the required parameter 'resource_link_id' when calling IntegrationsApi.namespace_integrations_lti1_integration_id_assets_asset_type_asset_id_post" if resource_link_id.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       if opts[:'oauth_signature_method'] && !['HMAC-SHA1'].include?(opts[:'oauth_signature_method'])
         fail ArgumentError, 'invalid value for "oauth_signature_method", must be one of HMAC-SHA1'
       end
+      
+      
+      
+      
+      
+      
+      
       if opts[:'oauth_signature_method2'] && !['HMAC-SHA1'].include?(opts[:'oauth_signature_method2'])
         fail ArgumentError, 'invalid value for "oauth_signature_method2", must be one of HMAC-SHA1'
       end
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/integrations/lti1/{integrationId}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'integrationId' + '}', integration_id.to_s).sub('{' + 'assetType' + '}', asset_type.to_s).sub('{' + 'assetId' + '}', asset_id.to_s)
 
@@ -330,7 +503,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = []
+      
+      auth_names = []
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -368,14 +542,39 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: IntegrationsApi.replace_integration ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling IntegrationsApi.replace_integration" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'integration_id' is set
       fail ArgumentError, "Missing the required parameter 'integration_id' when calling IntegrationsApi.replace_integration" if integration_id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'integration_type' is set
       fail ArgumentError, "Missing the required parameter 'integration_type' when calling IntegrationsApi.replace_integration" if integration_type.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'body' is set
       fail ArgumentError, "Missing the required parameter 'body' when calling IntegrationsApi.replace_integration" if body.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/integrations/{integrationType}/{integrationId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'integrationId' + '}', integration_id.to_s).sub('{' + 'integrationType' + '}', integration_type.to_s)
 
@@ -398,6 +597,7 @@ module BlueprintClient
 
       # http body (model)
       post_body = @api_client.object_to_http_body(body)
+      
       auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,

@@ -47,16 +47,47 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AssetsApi.add_asset_to_node ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.add_asset_to_node" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling AssetsApi.add_asset_to_node" if type.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling AssetsApi.add_asset_to_node" if id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_type' is set
       fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetsApi.add_asset_to_node" if asset_type.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_id' is set
       fail ArgumentError, "Missing the required parameter 'asset_id' when calling AssetsApi.add_asset_to_node" if asset_id.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'assetType' + '}', asset_type.to_s).sub('{' + 'assetId' + '}', asset_id.to_s)
 
@@ -79,7 +110,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -116,12 +148,31 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AssetsApi.delete_asset ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.delete_asset" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_id' is set
       fail ArgumentError, "Missing the required parameter 'asset_id' when calling AssetsApi.delete_asset" if asset_id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_type' is set
       fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetsApi.delete_asset" if asset_type.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'assetId' + '}', asset_id.to_s).sub('{' + 'assetType' + '}', asset_type.to_s)
 
@@ -144,7 +195,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -180,12 +232,31 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AssetsApi.get_asset ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.get_asset" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_type' is set
       fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetsApi.get_asset" if asset_type.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_id' is set
       fail ArgumentError, "Missing the required parameter 'asset_id' when calling AssetsApi.get_asset" if asset_id.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'assetType' + '}', asset_type.to_s).sub('{' + 'assetId' + '}', asset_id.to_s)
 
@@ -208,7 +279,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -251,12 +323,49 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AssetsApi.get_assets_in_node ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.get_assets_in_node" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling AssetsApi.get_assets_in_node" if type.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling AssetsApi.get_assets_in_node" if id.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/assets".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s).sub('{' + 'id' + '}', id.to_s)
 
@@ -282,7 +391,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -323,16 +433,47 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AssetsApi.remove_asset_from_node ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.remove_asset_from_node" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'type' is set
       fail ArgumentError, "Missing the required parameter 'type' when calling AssetsApi.remove_asset_from_node" if type.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'id' is set
       fail ArgumentError, "Missing the required parameter 'id' when calling AssetsApi.remove_asset_from_node" if id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_type' is set
       fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetsApi.remove_asset_from_node" if asset_type.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_id' is set
       fail ArgumentError, "Missing the required parameter 'asset_id' when calling AssetsApi.remove_asset_from_node" if asset_id.nil?
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/nodes/{type}/{id}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'type' + '}', type.to_s).sub('{' + 'id' + '}', id.to_s).sub('{' + 'assetType' + '}', asset_type.to_s).sub('{' + 'assetId' + '}', asset_id.to_s)
 
@@ -355,7 +496,8 @@ module BlueprintClient
 
       # http body (model)
       post_body = nil
-            auth_names = ['oauth2']
+      
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -369,7 +511,7 @@ module BlueprintClient
     end
 
     # Replaces the Asset with the data sent in the body
-    # Wholesale replacement of Asset data: if you were to PUT to:   /1/{namespace}/assets/sometype/someid  with a body of:   { type: \"someothertype\", id: \"someotherid\" }  It would change the Asset's path to:   /1/{namespace}/assets/someothertype/someotherid  and   /1/{namespace}/assets/sometype/someid would return a 404. It would also update the assets associated with any node. 
+    # Wholesale replacement of Asset data: if you were to PUT to:\n  /1/{namespace}/assets/sometype/someid\n\nwith a body of:\n  { type: \"someothertype\", id: \"someotherid\" }\n\nIt would change the Asset's path to:\n  /1/{namespace}/assets/someothertype/someotherid\n\nand\n  /1/{namespace}/assets/sometype/someid\nwould return a 404.\nIt would also update the assets associated with any node.\n
     # @param namespace identifier namespacing the blueprint.
     # @param asset_id id of an asset
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
@@ -382,7 +524,7 @@ module BlueprintClient
     end
 
     # Replaces the Asset with the data sent in the body
-    # Wholesale replacement of Asset data: if you were to PUT to:   /1/{namespace}/assets/sometype/someid  with a body of:   { type: \&quot;someothertype\&quot;, id: \&quot;someotherid\&quot; }  It would change the Asset&#39;s path to:   /1/{namespace}/assets/someothertype/someotherid  and   /1/{namespace}/assets/sometype/someid would return a 404. It would also update the assets associated with any node. 
+    # Wholesale replacement of Asset data: if you were to PUT to:\n  /1/{namespace}/assets/sometype/someid\n\nwith a body of:\n  { type: \&quot;someothertype\&quot;, id: \&quot;someotherid\&quot; }\n\nIt would change the Asset&#39;s path to:\n  /1/{namespace}/assets/someothertype/someotherid\n\nand\n  /1/{namespace}/assets/sometype/someid\nwould return a 404.\nIt would also update the assets associated with any node.\n
     # @param namespace identifier namespacing the blueprint.
     # @param asset_id id of an asset
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
@@ -393,12 +535,37 @@ module BlueprintClient
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AssetsApi.replace_asset ..."
       end
+      
+      
       # verify the required parameter 'namespace' is set
       fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.replace_asset" if namespace.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_id' is set
       fail ArgumentError, "Missing the required parameter 'asset_id' when calling AssetsApi.replace_asset" if asset_id.nil?
+      
+      
+      
+      
+      
+      
       # verify the required parameter 'asset_type' is set
       fail ArgumentError, "Missing the required parameter 'asset_type' when calling AssetsApi.replace_asset" if asset_type.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespace}/assets/{assetType}/{assetId}".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s).sub('{' + 'assetId' + '}', asset_id.to_s).sub('{' + 'assetType' + '}', asset_type.to_s)
 
@@ -421,6 +588,7 @@ module BlueprintClient
 
       # http body (model)
       post_body = @api_client.object_to_http_body(opts[:'body'])
+      
       auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
