@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**get_assets_in_node**](AssetsApi.md#get_assets_in_node) | **GET** /{namespace}/nodes/{type}/{id}/assets | 
 [**remove_asset_from_node**](AssetsApi.md#remove_asset_from_node) | **DELETE** /{namespace}/nodes/{type}/{id}/assets/{assetType}/{assetId} | 
 [**replace_asset**](AssetsApi.md#replace_asset) | **PUT** /{namespace}/assets/{assetType}/{assetId} | Replaces the Asset with the data sent in the body
+[**search_assets**](AssetsApi.md#search_assets) | **GET** /{namespace}/assets | Search assets
 
 
 # **add_asset_to_node**
@@ -366,6 +367,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AssetBody**](AssetBody.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/vnd.api+json
+
+
+
+# **search_assets**
+> AssetResultSet search_assets(namespace, , opts)
+
+Search assets
+
+This endpoint provides a way to get assets as a pageable result set, based (optionally) on filters.\nThe include parameter can only be set to `nodes`\n\n###### Find all assets in namespace abc\n`/1/abc/assets`\n\n###### Find all lists for abc:\n`/1/abc/assets?filter[assetType]=lists`\n\n###### Find all assets that are related to a given node of DEP101:\n`/1/abc/assets?filter[node]=departments%2Fdep101`\n\n###### Find all assets that are related to both node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101&filter[node]=departments%2Fdep102`\n\n###### Find all assets that are related to either node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101,departments%2Fdep102`\n
+
+### Example
+```ruby
+# load the gem
+require 'blueprint_ruby_client'
+# setup authorization 
+BlueprintClient.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BlueprintClient::AssetsApi.new
+
+namespace = "namespace_example" # String | identifier namespacing the blueprint.
+
+opts = { 
+  offset: 3.4, # Float | index to start result set from
+  limit: 3.4 # Float | number of records to return
+  include: ["include_example"] # Array<String> | comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
+  filter_node: ["filter_node_example"], # Array<String> | limit to assets that are related to a node matching type/code
+  filter_asset_type: ["filter_asset_type_example"], # Array<String> | type of asset to return
+}
+
+begin
+  #Search assets
+  result = api_instance.search_assets(namespace, , opts)
+  p result
+rescue BlueprintClient::ApiError => e
+  puts "Exception when calling AssetsApi->search_assets: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **namespace** | **String**| identifier namespacing the blueprint. | 
+ **offset** | [**Float**](.md)| index to start result set from | [optional] 
+ **limit** | [**Float**](.md)| number of records to return | [optional] 
+ **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets | [optional] 
+ **filter_node** | [**Array&lt;String&gt;**](String.md)| limit to assets that are related to a node matching type/code | [optional] 
+ **filter_asset_type** | [**Array&lt;String&gt;**](String.md)| type of asset to return | [optional] 
+
+### Return type
+
+[**AssetResultSet**](AssetResultSet.md)
 
 ### Authorization
 

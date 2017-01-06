@@ -622,7 +622,7 @@ module BlueprintClient
     # @param id id identifying a domain model
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
+    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
     # @return [NodeBody]
     def get_node(namespace, id, type, opts = {})
       data, _status_code, _headers = get_node_with_http_info(namespace, id, type, opts)
@@ -635,7 +635,7 @@ module BlueprintClient
     # @param id id identifying a domain model
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
+    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
     # @return [Array<(NodeBody, Fixnum, Hash)>] NodeBody data, response status code and response headers
     def get_node_with_http_info(namespace, id, type, opts = {})
       if @api_client.config.debugging
@@ -909,12 +909,13 @@ module BlueprintClient
     end
 
     # Search nodes
-    # This endpoint is a really flexible way to ask questions about the hierarchy. for example:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&filter[nodeType]=Departments` # <= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&filter[ancestor]=departments%2FDEP101&filter[hasAssets]=true&filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node's valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[from]=20150101&filter[to]=20151231`\n
+    # This endpoint is a really flexible way to ask questions about the hierarchy.\nThe includes parameter can be set to either parents, children, assets.\n\nExamples:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all nodes that are descendants of DEP101 or DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101,departments%2Fdep102`\n\n###### Find all nodes that are descendants of DEP101 and DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101&filter[descendant]=departments%2Fdep102``\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&filter[nodeType]=Departments` # <= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&filter[ancestor]=departments%2FDEP101&filter[hasAssets]=true&filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node's valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[from]=20150101&filter[to]=20151231`\n\n###### Find all nodes of type modules with assets which are also related to DEP101.\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=true&filter[assetNode]=departments%2Fdep101`\n
     # @param namespace_inc_global identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call.
     # @param [Hash] opts the optional parameters
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
-    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
+    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
+    # @option opts [Array<String>] :filter_asset limit to nodes that have an asset matching type/code
     # @option opts [Array<String>] :filter_node_type type of nodes to return
     # @option opts [Array<String>] :filter_child limit to nodes with children matching type/code
     # @option opts [Array<String>] :filter_parent limit to nodes with parent matching type/code
@@ -929,6 +930,7 @@ module BlueprintClient
     # @option opts [String] :q_parent query id/title terms to search for parent nodes.  Allows wildcard searching with &#39;*&#39;
     # @option opts [String] :q_descendant query id/title terms to search for descendant nodes.  Allows wildcard searching with &#39;*&#39;
     # @option opts [String] :q_ancestor query id/title terms to search for ancestor nodes.  Allows wildcard searching with &#39;*&#39;
+    # @option opts [Array<String>] :filter_asset_node limit to nodes that have an asset related to another node matching type/code
     # @return [NodeResultSet]
     def search_nodes(namespace_inc_global, opts = {})
       data, _status_code, _headers = search_nodes_with_http_info(namespace_inc_global, opts)
@@ -936,12 +938,13 @@ module BlueprintClient
     end
 
     # Search nodes
-    # This endpoint is a really flexible way to ask questions about the hierarchy. for example:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&amp;filter[nodeType]=Departments` # &lt;= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&amp;filter[ancestor]=departments%2FDEP101&amp;filter[hasAssets]=true&amp;filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node&#39;s valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[from]=20150101&amp;filter[to]=20151231`\n
+    # This endpoint is a really flexible way to ask questions about the hierarchy.\nThe includes parameter can be set to either parents, children, assets.\n\nExamples:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all nodes that are descendants of DEP101 or DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101,departments%2Fdep102`\n\n###### Find all nodes that are descendants of DEP101 and DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101&amp;filter[descendant]=departments%2Fdep102``\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&amp;filter[nodeType]=Departments` # &lt;= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&amp;filter[ancestor]=departments%2FDEP101&amp;filter[hasAssets]=true&amp;filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node&#39;s valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[from]=20150101&amp;filter[to]=20151231`\n\n###### Find all nodes of type modules with assets which are also related to DEP101.\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=true&amp;filter[assetNode]=departments%2Fdep101`\n
     # @param namespace_inc_global identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call.
     # @param [Hash] opts the optional parameters
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
-    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
+    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
+    # @option opts [Array<String>] :filter_asset limit to nodes that have an asset matching type/code
     # @option opts [Array<String>] :filter_node_type type of nodes to return
     # @option opts [Array<String>] :filter_child limit to nodes with children matching type/code
     # @option opts [Array<String>] :filter_parent limit to nodes with parent matching type/code
@@ -956,6 +959,7 @@ module BlueprintClient
     # @option opts [String] :q_parent query id/title terms to search for parent nodes.  Allows wildcard searching with &#39;*&#39;
     # @option opts [String] :q_descendant query id/title terms to search for descendant nodes.  Allows wildcard searching with &#39;*&#39;
     # @option opts [String] :q_ancestor query id/title terms to search for ancestor nodes.  Allows wildcard searching with &#39;*&#39;
+    # @option opts [Array<String>] :filter_asset_node limit to nodes that have an asset related to another node matching type/code
     # @return [Array<(NodeResultSet, Fixnum, Hash)>] NodeResultSet data, response status code and response headers
     def search_nodes_with_http_info(namespace_inc_global, opts = {})
       if @api_client.config.debugging
@@ -1072,6 +1076,18 @@ module BlueprintClient
       
       
       
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       # resource path
       local_var_path = "/{namespaceIncGlobal}/nodes".sub('{format}','json').sub('{' + 'namespaceIncGlobal' + '}', namespace_inc_global.to_s)
 
@@ -1080,6 +1096,7 @@ module BlueprintClient
       query_params[:'offset'] = opts[:'offset'] if opts[:'offset']
       query_params[:'limit'] = opts[:'limit'] if opts[:'limit']
       query_params[:'include'] = @api_client.build_collection_param(opts[:'include'], :csv) if opts[:'include']
+      query_params[:'filter[asset]'] = @api_client.build_collection_param(opts[:'filter_asset'], :csv) if opts[:'filter_asset']
       query_params[:'filter[nodeType]'] = @api_client.build_collection_param(opts[:'filter_node_type'], :csv) if opts[:'filter_node_type']
       query_params[:'filter[child]'] = @api_client.build_collection_param(opts[:'filter_child'], :csv) if opts[:'filter_child']
       query_params[:'filter[parent]'] = @api_client.build_collection_param(opts[:'filter_parent'], :csv) if opts[:'filter_parent']
@@ -1094,6 +1111,7 @@ module BlueprintClient
       query_params[:'q[parent]'] = opts[:'q_parent'] if opts[:'q_parent']
       query_params[:'q[descendant]'] = opts[:'q_descendant'] if opts[:'q_descendant']
       query_params[:'q[ancestor]'] = opts[:'q_ancestor'] if opts[:'q_ancestor']
+      query_params[:'filter[asset.node]'] = @api_client.build_collection_param(opts[:'filter_asset_node'], :csv) if opts[:'filter_asset_node']
 
       # header parameters
       header_params = {}

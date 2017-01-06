@@ -446,7 +446,7 @@ id = "id_example" # String | id identifying a domain model
 type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 opts = { 
-  include: ["include_example"] # Array<String> | comma separated list of elements to hydrate. Can include children, parents, and/or assets
+  include: ["include_example"] # Array<String> | comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
 }
 
 begin
@@ -465,7 +465,7 @@ Name | Type | Description  | Notes
  **namespace** | **String**| identifier namespacing the blueprint. | 
  **id** | **String**| id identifying a domain model | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
- **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, and/or assets | [optional] 
+ **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets | [optional] 
 
 ### Return type
 
@@ -612,7 +612,7 @@ Name | Type | Description  | Notes
 
 Search nodes
 
-This endpoint is a really flexible way to ask questions about the hierarchy. for example:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&filter[nodeType]=Departments` # <= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&filter[ancestor]=departments%2FDEP101&filter[hasAssets]=true&filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node's valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[from]=20150101&filter[to]=20151231`\n
+This endpoint is a really flexible way to ask questions about the hierarchy.\nThe includes parameter can be set to either parents, children, assets.\n\nExamples:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all nodes that are descendants of DEP101 or DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101,departments%2Fdep102`\n\n###### Find all nodes that are descendants of DEP101 and DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101&filter[descendant]=departments%2Fdep102``\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&filter[nodeType]=Departments` # <= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&filter[ancestor]=departments%2FDEP101&filter[hasAssets]=true&filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node's valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[from]=20150101&filter[to]=20151231`\n\n###### Find all nodes of type modules with assets which are also related to DEP101.\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=true&filter[assetNode]=departments%2Fdep101`\n
 
 ### Example
 ```ruby
@@ -631,7 +631,8 @@ namespace_inc_global = "namespace_inc_global_example" # String | identifier name
 opts = { 
   offset: 3.4, # Float | index to start result set from
   limit: 3.4 # Float | number of records to return
-  include: ["include_example"] # Array<String> | comma separated list of elements to hydrate. Can include children, parents, and/or assets
+  include: ["include_example"] # Array<String> | comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
+  filter_asset: ["filter_asset_example"], # Array<String> | limit to nodes that have an asset matching type/code
   filter_node_type: ["filter_node_type_example"], # Array<String> | type of nodes to return
   filter_child: ["filter_child_example"], # Array<String> | limit to nodes with children matching type/code
   filter_parent: ["filter_parent_example"], # Array<String> | limit to nodes with parent matching type/code
@@ -645,7 +646,8 @@ opts = {
   q_child: "q_child_example", # String | query id/title terms to search for child nodes.  Allows wildcard searching with '*'
   q_parent: "q_parent_example", # String | query id/title terms to search for parent nodes.  Allows wildcard searching with '*'
   q_descendant: "q_descendant_example", # String | query id/title terms to search for descendant nodes.  Allows wildcard searching with '*'
-  q_ancestor: "q_ancestor_example" # String | query id/title terms to search for ancestor nodes.  Allows wildcard searching with '*'
+  q_ancestor: "q_ancestor_example", # String | query id/title terms to search for ancestor nodes.  Allows wildcard searching with '*'
+  filter_asset_node: ["filter_asset_node_example"] # Array<String> | limit to nodes that have an asset related to another node matching type/code
 }
 
 begin
@@ -664,7 +666,8 @@ Name | Type | Description  | Notes
  **namespace_inc_global** | **String**| identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call. | 
  **offset** | [**Float**](.md)| index to start result set from | [optional] 
  **limit** | [**Float**](.md)| number of records to return | [optional] 
- **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, and/or assets | [optional] 
+ **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets | [optional] 
+ **filter_asset** | [**Array&lt;String&gt;**](String.md)| limit to nodes that have an asset matching type/code | [optional] 
  **filter_node_type** | [**Array&lt;String&gt;**](String.md)| type of nodes to return | [optional] 
  **filter_child** | [**Array&lt;String&gt;**](String.md)| limit to nodes with children matching type/code | [optional] 
  **filter_parent** | [**Array&lt;String&gt;**](String.md)| limit to nodes with parent matching type/code | [optional] 
@@ -679,6 +682,7 @@ Name | Type | Description  | Notes
  **q_parent** | **String**| query id/title terms to search for parent nodes.  Allows wildcard searching with &#39;*&#39; | [optional] 
  **q_descendant** | **String**| query id/title terms to search for descendant nodes.  Allows wildcard searching with &#39;*&#39; | [optional] 
  **q_ancestor** | **String**| query id/title terms to search for ancestor nodes.  Allows wildcard searching with &#39;*&#39; | [optional] 
+ **filter_asset_node** | [**Array&lt;String&gt;**](String.md)| limit to nodes that have an asset related to another node matching type/code | [optional] 
 
 ### Return type
 

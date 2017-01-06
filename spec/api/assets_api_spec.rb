@@ -148,4 +148,25 @@ describe 'AssetsApi' do
     end
   end
 
+  # unit tests for search_assets
+  # Search assets
+  # This endpoint provides a way to get assets as a pageable result set, based (optionally) on filters.\nThe include parameter can only be set to `nodes`\n\n###### Find all assets in namespace abc\n`/1/abc/assets`\n\n###### Find all lists for abc:\n`/1/abc/assets?filter[assetType]=lists`\n\n###### Find all assets that are related to a given node of DEP101:\n`/1/abc/assets?filter[node]=departments%2Fdep101`\n\n###### Find all assets that are related to both node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101&amp;filter[node]=departments%2Fdep102`\n\n###### Find all assets that are related to either node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101,departments%2Fdep102`\n
+  # @param namespace identifier namespacing the blueprint.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Float] :offset index to start result set from
+  # @option opts [Float] :limit number of records to return
+  # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
+  # @option opts [Array<String>] :filter_node limit to assets that are related to a node matching type/code
+  # @option opts [Array<String>] :filter_asset_type type of asset to return
+  # @return [AssetResultSet]
+  describe 'search_assets test' do
+    it "should work" do
+      # assertion here
+      # should be_a()
+      # should be_nil
+      # should ==
+      # should_not ==
+    end
+  end
+
 end

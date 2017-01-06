@@ -166,7 +166,7 @@ describe 'HierarchyApi' do
   # @param id id identifying a domain model
   # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param [Hash] opts the optional parameters
-  # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
+  # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
   # @return [NodeBody]
   describe 'get_node test' do
     it "should work" do
@@ -219,12 +219,13 @@ describe 'HierarchyApi' do
 
   # unit tests for search_nodes
   # Search nodes
-  # This endpoint is a really flexible way to ask questions about the hierarchy. for example:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&amp;filter[nodeType]=Departments` # &lt;= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&amp;filter[ancestor]=departments%2FDEP101&amp;filter[hasAssets]=true&amp;filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node&#39;s valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[from]=20150101&amp;filter[to]=20151231`\n
+  # This endpoint is a really flexible way to ask questions about the hierarchy.\nThe includes parameter can be set to either parents, children, assets.\n\nExamples:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all nodes that are descendants of DEP101 or DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101,departments%2Fdep102`\n\n###### Find all nodes that are descendants of DEP101 and DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101&amp;filter[descendant]=departments%2Fdep102``\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&amp;filter[nodeType]=Departments` # &lt;= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&amp;filter[ancestor]=departments%2FDEP101&amp;filter[hasAssets]=true&amp;filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node&#39;s valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=false&amp;filter[from]=20150101&amp;filter[to]=20151231`\n\n###### Find all nodes of type modules with assets which are also related to DEP101.\n`/1/global/nodes?filter[nodeType]=Modules&amp;filter[hasAssets]=true&amp;filter[assetNode]=departments%2Fdep101`\n
   # @param namespace_inc_global identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call.
   # @param [Hash] opts the optional parameters
   # @option opts [Float] :offset index to start result set from
   # @option opts [Float] :limit number of records to return
-  # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, and/or assets
+  # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
+  # @option opts [Array<String>] :filter_asset limit to nodes that have an asset matching type/code
   # @option opts [Array<String>] :filter_node_type type of nodes to return
   # @option opts [Array<String>] :filter_child limit to nodes with children matching type/code
   # @option opts [Array<String>] :filter_parent limit to nodes with parent matching type/code
@@ -239,6 +240,7 @@ describe 'HierarchyApi' do
   # @option opts [String] :q_parent query id/title terms to search for parent nodes.  Allows wildcard searching with &#39;*&#39;
   # @option opts [String] :q_descendant query id/title terms to search for descendant nodes.  Allows wildcard searching with &#39;*&#39;
   # @option opts [String] :q_ancestor query id/title terms to search for ancestor nodes.  Allows wildcard searching with &#39;*&#39;
+  # @option opts [Array<String>] :filter_asset_node limit to nodes that have an asset related to another node matching type/code
   # @return [NodeResultSet]
   describe 'search_nodes test' do
     it "should work" do

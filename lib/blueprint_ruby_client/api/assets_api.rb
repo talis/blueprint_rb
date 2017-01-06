@@ -602,5 +602,115 @@ module BlueprintClient
       end
       return data, status_code, headers
     end
+
+    # Search assets
+    # This endpoint provides a way to get assets as a pageable result set, based (optionally) on filters.\nThe include parameter can only be set to `nodes`\n\n###### Find all assets in namespace abc\n`/1/abc/assets`\n\n###### Find all lists for abc:\n`/1/abc/assets?filter[assetType]=lists`\n\n###### Find all assets that are related to a given node of DEP101:\n`/1/abc/assets?filter[node]=departments%2Fdep101`\n\n###### Find all assets that are related to both node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101&filter[node]=departments%2Fdep102`\n\n###### Find all assets that are related to either node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101,departments%2Fdep102`\n
+    # @param namespace identifier namespacing the blueprint.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Float] :offset index to start result set from
+    # @option opts [Float] :limit number of records to return
+    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
+    # @option opts [Array<String>] :filter_node limit to assets that are related to a node matching type/code
+    # @option opts [Array<String>] :filter_asset_type type of asset to return
+    # @return [AssetResultSet]
+    def search_assets(namespace, opts = {})
+      data, _status_code, _headers = search_assets_with_http_info(namespace, opts)
+      return data
+    end
+
+    # Search assets
+    # This endpoint provides a way to get assets as a pageable result set, based (optionally) on filters.\nThe include parameter can only be set to `nodes`\n\n###### Find all assets in namespace abc\n`/1/abc/assets`\n\n###### Find all lists for abc:\n`/1/abc/assets?filter[assetType]=lists`\n\n###### Find all assets that are related to a given node of DEP101:\n`/1/abc/assets?filter[node]=departments%2Fdep101`\n\n###### Find all assets that are related to both node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101&amp;filter[node]=departments%2Fdep102`\n\n###### Find all assets that are related to either node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101,departments%2Fdep102`\n
+    # @param namespace identifier namespacing the blueprint.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Float] :offset index to start result set from
+    # @option opts [Float] :limit number of records to return
+    # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
+    # @option opts [Array<String>] :filter_node limit to assets that are related to a node matching type/code
+    # @option opts [Array<String>] :filter_asset_type type of asset to return
+    # @return [Array<(AssetResultSet, Fixnum, Hash)>] AssetResultSet data, response status code and response headers
+    def search_assets_with_http_info(namespace, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: AssetsApi.search_assets ..."
+      end
+      
+      
+      # verify the required parameter 'namespace' is set
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.search_assets" if namespace.nil?
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      # resource path
+      local_var_path = "/{namespace}/assets".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'offset'] = opts[:'offset'] if opts[:'offset']
+      query_params[:'limit'] = opts[:'limit'] if opts[:'limit']
+      query_params[:'include'] = @api_client.build_collection_param(opts[:'include'], :csv) if opts[:'include']
+      query_params[:'filter[node]'] = @api_client.build_collection_param(opts[:'filter_node'], :csv) if opts[:'filter_node']
+      query_params[:'filter[assetType]'] = @api_client.build_collection_param(opts[:'filter_asset_type'], :csv) if opts[:'filter_asset_type']
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      
+      auth_names = ['oauth2']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AssetResultSet')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssetsApi#search_assets\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end
