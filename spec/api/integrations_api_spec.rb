@@ -35,7 +35,7 @@ describe 'IntegrationsApi' do
   # unit tests for add_integration
   # 
   # Add an integration
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param body integration
   # @param [Hash] opts the optional parameters
   # @return [IntegrationBody]
@@ -52,7 +52,7 @@ describe 'IntegrationsApi' do
   # unit tests for delete_integration
   # 
   # Delete an integration
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param integration_id id of an integration
   # @param integration_type Type of external integration, e.g. &#39;lti1&#39;
   # @param [Hash] opts the optional parameters
@@ -70,7 +70,7 @@ describe 'IntegrationsApi' do
   # unit tests for get_integration
   # 
   # Get details of a given integration
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param integration_type Type of external integration, e.g. &#39;lti1&#39;
   # @param integration_id id of an integration
   # @param [Hash] opts the optional parameters
@@ -88,7 +88,7 @@ describe 'IntegrationsApi' do
   # unit tests for namespace_integrations_lti1_integration_id_assets_asset_type_asset_id_post
   # 
   # LTI launch url for integration
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param integration_id id of an integration
   # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
   # @param asset_id id of an asset
@@ -122,7 +122,7 @@ describe 'IntegrationsApi' do
   # unit tests for replace_integration
   # 
   # Replace an integration
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param integration_id id of an integration
   # @param integration_type Type of external integration, e.g. &#39;lti1&#39;
   # @param body integration
