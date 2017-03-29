@@ -21,7 +21,7 @@ require 'blueprint_ruby_client'
 
 api_instance = BlueprintClient::LTIApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 integration_id = "integration_id_example" # String | id of an integration
 
@@ -61,7 +61,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **integration_id** | **String**| id of an integration | 
  **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
  **asset_id** | **String**| id of an asset | 

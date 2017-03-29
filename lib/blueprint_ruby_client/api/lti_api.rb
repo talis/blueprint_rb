@@ -22,7 +22,7 @@ module BlueprintClient
 
     # 
     # LTI launch url for integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param integration_id id of an integration
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param asset_id id of an asset
@@ -50,7 +50,7 @@ module BlueprintClient
 
     # 
     # LTI launch url for integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param integration_id id of an integration
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param asset_id id of an asset
