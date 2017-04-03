@@ -26,7 +26,7 @@ end
 
 api_instance = BlueprintClient::AssetTypeConfigsApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
+namespace = "namespace_example" # String | identifier namespacing the blueprint.
 
 asset_type = "asset_type_example" # String | subtype of Asset, e.g. 'textbooks', 'digitisations', etc.
 
@@ -43,7 +43,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
+ **namespace** | **String**| identifier namespacing the blueprint. | 
  **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
 
 ### Return type

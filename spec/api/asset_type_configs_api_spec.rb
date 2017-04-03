@@ -35,7 +35,7 @@ describe 'AssetTypeConfigsApi' do
   # unit tests for get
   # 
   # get a template for a given asset type
-  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
+  # @param namespace identifier namespacing the blueprint.
   # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
   # @param [Hash] opts the optional parameters
   # @return [TemplateBody]
