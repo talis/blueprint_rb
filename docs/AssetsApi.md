@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_asset_to_node**](AssetsApi.md#add_asset_to_node) | **PUT** /{namespace}/nodes/{type}/{id}/assets/{assetType}/{assetId} | 
 [**delete_asset**](AssetsApi.md#delete_asset) | **DELETE** /{namespace}/assets/{assetType}/{assetId} | 
+[**delete_assets**](AssetsApi.md#delete_assets) | **DELETE** /{namespace}/assets | Delete assets
 [**get_asset**](AssetsApi.md#get_asset) | **GET** /{namespace}/assets/{assetType}/{assetId} | 
 [**get_assets_in_node**](AssetsApi.md#get_assets_in_node) | **GET** /{namespace}/nodes/{type}/{id}/assets | 
 [**remove_asset_from_node**](AssetsApi.md#remove_asset_from_node) | **DELETE** /{namespace}/nodes/{type}/{id}/assets/{assetType}/{assetId} | 
@@ -32,7 +33,7 @@ end
 
 api_instance = BlueprintClient::AssetsApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
@@ -55,7 +56,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **id** | **String**| id identifying a domain model | 
  **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
@@ -95,7 +96,7 @@ end
 
 api_instance = BlueprintClient::AssetsApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 asset_id = "asset_id_example" # String | id of an asset
 
@@ -113,9 +114,60 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **asset_id** | **String**| id of an asset | 
  **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/vnd.api+json
+
+
+
+# **delete_assets**
+> delete_assets(namespace, )
+
+Delete assets
+
+Delete all assets belonging to the given namespace.
+
+### Example
+```ruby
+# load the gem
+require 'blueprint_ruby_client'
+# setup authorization 
+BlueprintClient.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BlueprintClient::AssetsApi.new
+
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
+
+
+begin
+  #Delete assets
+  api_instance.delete_assets(namespace, )
+rescue BlueprintClient::ApiError => e
+  puts "Exception when calling AssetsApi->delete_assets: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
 
 ### Return type
 
@@ -151,7 +203,7 @@ end
 
 api_instance = BlueprintClient::AssetsApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 asset_type = "asset_type_example" # String | subtype of Asset, e.g. 'textbooks', 'digitisations', etc.
 
@@ -171,7 +223,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
  **asset_id** | **String**| id of an asset | 
 
@@ -209,14 +261,14 @@ end
 
 api_instance = BlueprintClient::AssetsApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
 id = "id_example" # String | id identifying a domain model
 
 opts = { 
-  filter_asset_type: ["filter_asset_type_example"], # Array<String> | type of asset to return
+  filter_asset_type: ["filter_asset_type_example"], # Array<String> | type of asset to return. This filters the results by asset type, but returns all the assets associated with the result.
   offset: 3.4, # Float | index to start result set from
   limit: 3.4 # Float | number of records to return
 }
@@ -233,10 +285,10 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **id** | **String**| id identifying a domain model | 
- **filter_asset_type** | [**Array&lt;String&gt;**](String.md)| type of asset to return | [optional] 
+ **filter_asset_type** | [**Array&lt;String&gt;**](String.md)| type of asset to return. This filters the results by asset type, but returns all the assets associated with the result. | [optional] 
  **offset** | [**Float**](.md)| index to start result set from | [optional] 
  **limit** | [**Float**](.md)| number of records to return | [optional] 
 
@@ -274,7 +326,7 @@ end
 
 api_instance = BlueprintClient::AssetsApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
@@ -296,7 +348,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **id** | **String**| id identifying a domain model | 
  **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
@@ -336,7 +388,7 @@ end
 
 api_instance = BlueprintClient::AssetsApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 asset_id = "asset_id_example" # String | id of an asset
 
@@ -359,7 +411,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **asset_id** | **String**| id of an asset | 
  **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
  **body** | [**AssetBody**](AssetBody.md)| asset | [optional] 
@@ -398,14 +450,14 @@ end
 
 api_instance = BlueprintClient::AssetsApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 opts = { 
   offset: 3.4, # Float | index to start result set from
   limit: 3.4 # Float | number of records to return
   include: ["include_example"] # Array<String> | comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
   filter_node: ["filter_node_example"], # Array<String> | limit to assets that are related to a node matching type/code
-  filter_asset_type: ["filter_asset_type_example"], # Array<String> | type of asset to return
+  filter_asset_type: ["filter_asset_type_example"], # Array<String> | type of asset to return. This filters the results by asset type, but returns all the assets associated with the result.
 }
 
 begin
@@ -421,12 +473,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **offset** | [**Float**](.md)| index to start result set from | [optional] 
  **limit** | [**Float**](.md)| number of records to return | [optional] 
  **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets | [optional] 
  **filter_node** | [**Array&lt;String&gt;**](String.md)| limit to assets that are related to a node matching type/code | [optional] 
- **filter_asset_type** | [**Array&lt;String&gt;**](String.md)| type of asset to return | [optional] 
+ **filter_asset_type** | [**Array&lt;String&gt;**](String.md)| type of asset to return. This filters the results by asset type, but returns all the assets associated with the result. | [optional] 
 
 ### Return type
 

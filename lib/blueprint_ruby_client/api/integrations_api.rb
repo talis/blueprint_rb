@@ -22,7 +22,7 @@ module BlueprintClient
 
     # 
     # Add an integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param body integration
     # @param [Hash] opts the optional parameters
     # @return [IntegrationBody]
@@ -33,7 +33,7 @@ module BlueprintClient
 
     # 
     # Add an integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param body integration
     # @param [Hash] opts the optional parameters
     # @return [Array<(IntegrationBody, Fixnum, Hash)>] IntegrationBody data, response status code and response headers
@@ -97,7 +97,7 @@ module BlueprintClient
 
     # 
     # Delete an integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param integration_id id of an integration
     # @param integration_type Type of external integration, e.g. &#39;lti1&#39;
     # @param [Hash] opts the optional parameters
@@ -109,7 +109,7 @@ module BlueprintClient
 
     # 
     # Delete an integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param integration_id id of an integration
     # @param integration_type Type of external integration, e.g. &#39;lti1&#39;
     # @param [Hash] opts the optional parameters
@@ -181,7 +181,7 @@ module BlueprintClient
 
     # 
     # Get details of a given integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param integration_type Type of external integration, e.g. &#39;lti1&#39;
     # @param integration_id id of an integration
     # @param [Hash] opts the optional parameters
@@ -193,7 +193,7 @@ module BlueprintClient
 
     # 
     # Get details of a given integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param integration_type Type of external integration, e.g. &#39;lti1&#39;
     # @param integration_id id of an integration
     # @param [Hash] opts the optional parameters
@@ -266,7 +266,7 @@ module BlueprintClient
 
     # 
     # LTI launch url for integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param integration_id id of an integration
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param asset_id id of an asset
@@ -294,7 +294,7 @@ module BlueprintClient
 
     # 
     # LTI launch url for integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param integration_id id of an integration
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param asset_id id of an asset
@@ -519,7 +519,7 @@ module BlueprintClient
 
     # 
     # Replace an integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param integration_id id of an integration
     # @param integration_type Type of external integration, e.g. &#39;lti1&#39;
     # @param body integration
@@ -532,7 +532,7 @@ module BlueprintClient
 
     # 
     # Replace an integration
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param integration_id id of an integration
     # @param integration_type Type of external integration, e.g. &#39;lti1&#39;
     # @param body integration

@@ -35,7 +35,7 @@ describe 'AssetsApi' do
   # unit tests for add_asset_to_node
   # 
   # Add an asset to the node.  Body must be empty.  Will upsert the asset if it doesn&#39;t exist
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param id id identifying a domain model
   # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
@@ -55,7 +55,7 @@ describe 'AssetsApi' do
   # unit tests for delete_asset
   # 
   # Delete an Asset
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param asset_id id of an asset
   # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
   # @param [Hash] opts the optional parameters
@@ -70,10 +70,26 @@ describe 'AssetsApi' do
     end
   end
 
+  # unit tests for delete_assets
+  # Delete assets
+  # Delete all assets belonging to the given namespace.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'delete_assets test' do
+    it "should work" do
+      # assertion here
+      # should be_a()
+      # should be_nil
+      # should ==
+      # should_not ==
+    end
+  end
+
   # unit tests for get_asset
   # 
   # Get details of a given asset
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
   # @param asset_id id of an asset
   # @param [Hash] opts the optional parameters
@@ -91,11 +107,11 @@ describe 'AssetsApi' do
   # unit tests for get_assets_in_node
   # 
   # Get for assets in the relevant node
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param id id identifying a domain model
   # @param [Hash] opts the optional parameters
-  # @option opts [Array<String>] :filter_asset_type type of asset to return
+  # @option opts [Array<String>] :filter_asset_type type of asset to return. This filters the results by asset type, but returns all the assets associated with the result.
   # @option opts [Float] :offset index to start result set from
   # @option opts [Float] :limit number of records to return
   # @return [AssetResultSet]
@@ -112,7 +128,7 @@ describe 'AssetsApi' do
   # unit tests for remove_asset_from_node
   # 
   # Remove an asset from the relevant node
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
   # @param id id identifying a domain model
   # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
@@ -132,7 +148,7 @@ describe 'AssetsApi' do
   # unit tests for replace_asset
   # Replaces the Asset with the data sent in the body
   # Wholesale replacement of Asset data: if you were to PUT to:\n  /1/{namespace}/assets/sometype/someid\n\nwith a body of:\n  { type: \&quot;someothertype\&quot;, id: \&quot;someotherid\&quot; }\n\nIt would change the Asset&#39;s path to:\n  /1/{namespace}/assets/someothertype/someotherid\n\nand\n  /1/{namespace}/assets/sometype/someid\nwould return a 404.\nIt would also update the assets associated with any node.\n
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param asset_id id of an asset
   # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
   # @param [Hash] opts the optional parameters
@@ -151,13 +167,13 @@ describe 'AssetsApi' do
   # unit tests for search_assets
   # Search assets
   # This endpoint provides a way to get assets as a pageable result set, based (optionally) on filters.\nThe include parameter can only be set to `nodes`\n\n###### Find all assets in namespace abc\n`/1/abc/assets`\n\n###### Find all lists for abc:\n`/1/abc/assets?filter[assetType]=lists`\n\n###### Find all assets that are related to a given node of DEP101:\n`/1/abc/assets?filter[node]=departments%2Fdep101`\n\n###### Find all assets that are related to both node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101&amp;filter[node]=departments%2Fdep102`\n\n###### Find all assets that are related to either node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101,departments%2Fdep102`\n
-  # @param namespace identifier namespacing the blueprint.
+  # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
   # @param [Hash] opts the optional parameters
   # @option opts [Float] :offset index to start result set from
   # @option opts [Float] :limit number of records to return
   # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
   # @option opts [Array<String>] :filter_node limit to assets that are related to a node matching type/code
-  # @option opts [Array<String>] :filter_asset_type type of asset to return
+  # @option opts [Array<String>] :filter_asset_type type of asset to return. This filters the results by asset type, but returns all the assets associated with the result.
   # @return [AssetResultSet]
   describe 'search_assets test' do
     it "should work" do

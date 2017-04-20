@@ -22,7 +22,7 @@ module BlueprintClient
 
     # 
     # Add an asset to the node.  Body must be empty.  Will upsert the asset if it doesn't exist
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
     # @param id id identifying a domain model
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
@@ -36,7 +36,7 @@ module BlueprintClient
 
     # 
     # Add an asset to the node.  Body must be empty.  Will upsert the asset if it doesn&#39;t exist
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
     # @param id id identifying a domain model
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
@@ -127,7 +127,7 @@ module BlueprintClient
 
     # 
     # Delete an Asset
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_id id of an asset
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param [Hash] opts the optional parameters
@@ -139,7 +139,7 @@ module BlueprintClient
 
     # 
     # Delete an Asset
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_id id of an asset
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param [Hash] opts the optional parameters
@@ -209,9 +209,73 @@ module BlueprintClient
       return data, status_code, headers
     end
 
+    # Delete assets
+    # Delete all assets belonging to the given namespace.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_assets(namespace, opts = {})
+      delete_assets_with_http_info(namespace, opts)
+      return nil
+    end
+
+    # Delete assets
+    # Delete all assets belonging to the given namespace.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_assets_with_http_info(namespace, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: AssetsApi.delete_assets ..."
+      end
+      
+      
+      # verify the required parameter 'namespace' is set
+      fail ArgumentError, "Missing the required parameter 'namespace' when calling AssetsApi.delete_assets" if namespace.nil?
+      
+      
+      
+      
+      
+      # resource path
+      local_var_path = "/{namespace}/assets".sub('{format}','json').sub('{' + 'namespace' + '}', namespace.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/vnd.api+json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      
+      auth_names = ['oauth2']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssetsApi#delete_assets\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # 
     # Get details of a given asset
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param asset_id id of an asset
     # @param [Hash] opts the optional parameters
@@ -223,7 +287,7 @@ module BlueprintClient
 
     # 
     # Get details of a given asset
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param asset_id id of an asset
     # @param [Hash] opts the optional parameters
@@ -296,11 +360,11 @@ module BlueprintClient
 
     # 
     # Get for assets in the relevant node
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
     # @param id id identifying a domain model
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<String>] :filter_asset_type type of asset to return
+    # @option opts [Array<String>] :filter_asset_type type of asset to return. This filters the results by asset type, but returns all the assets associated with the result.
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
     # @return [AssetResultSet]
@@ -311,11 +375,11 @@ module BlueprintClient
 
     # 
     # Get for assets in the relevant node
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
     # @param id id identifying a domain model
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<String>] :filter_asset_type type of asset to return
+    # @option opts [Array<String>] :filter_asset_type type of asset to return. This filters the results by asset type, but returns all the assets associated with the result.
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
     # @return [Array<(AssetResultSet, Fixnum, Hash)>] AssetResultSet data, response status code and response headers
@@ -408,7 +472,7 @@ module BlueprintClient
 
     # 
     # Remove an asset from the relevant node
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
     # @param id id identifying a domain model
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
@@ -422,7 +486,7 @@ module BlueprintClient
 
     # 
     # Remove an asset from the relevant node
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param type subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc.
     # @param id id identifying a domain model
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
@@ -512,7 +576,7 @@ module BlueprintClient
 
     # Replaces the Asset with the data sent in the body
     # Wholesale replacement of Asset data: if you were to PUT to:\n  /1/{namespace}/assets/sometype/someid\n\nwith a body of:\n  { type: \"someothertype\", id: \"someotherid\" }\n\nIt would change the Asset's path to:\n  /1/{namespace}/assets/someothertype/someotherid\n\nand\n  /1/{namespace}/assets/sometype/someid\nwould return a 404.\nIt would also update the assets associated with any node.\n
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_id id of an asset
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param [Hash] opts the optional parameters
@@ -525,7 +589,7 @@ module BlueprintClient
 
     # Replaces the Asset with the data sent in the body
     # Wholesale replacement of Asset data: if you were to PUT to:\n  /1/{namespace}/assets/sometype/someid\n\nwith a body of:\n  { type: \&quot;someothertype\&quot;, id: \&quot;someotherid\&quot; }\n\nIt would change the Asset&#39;s path to:\n  /1/{namespace}/assets/someothertype/someotherid\n\nand\n  /1/{namespace}/assets/sometype/someid\nwould return a 404.\nIt would also update the assets associated with any node.\n
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_id id of an asset
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param [Hash] opts the optional parameters
@@ -605,13 +669,13 @@ module BlueprintClient
 
     # Search assets
     # This endpoint provides a way to get assets as a pageable result set, based (optionally) on filters.\nThe include parameter can only be set to `nodes`\n\n###### Find all assets in namespace abc\n`/1/abc/assets`\n\n###### Find all lists for abc:\n`/1/abc/assets?filter[assetType]=lists`\n\n###### Find all assets that are related to a given node of DEP101:\n`/1/abc/assets?filter[node]=departments%2Fdep101`\n\n###### Find all assets that are related to both node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101&filter[node]=departments%2Fdep102`\n\n###### Find all assets that are related to either node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101,departments%2Fdep102`\n
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param [Hash] opts the optional parameters
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
     # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
     # @option opts [Array<String>] :filter_node limit to assets that are related to a node matching type/code
-    # @option opts [Array<String>] :filter_asset_type type of asset to return
+    # @option opts [Array<String>] :filter_asset_type type of asset to return. This filters the results by asset type, but returns all the assets associated with the result.
     # @return [AssetResultSet]
     def search_assets(namespace, opts = {})
       data, _status_code, _headers = search_assets_with_http_info(namespace, opts)
@@ -620,13 +684,13 @@ module BlueprintClient
 
     # Search assets
     # This endpoint provides a way to get assets as a pageable result set, based (optionally) on filters.\nThe include parameter can only be set to `nodes`\n\n###### Find all assets in namespace abc\n`/1/abc/assets`\n\n###### Find all lists for abc:\n`/1/abc/assets?filter[assetType]=lists`\n\n###### Find all assets that are related to a given node of DEP101:\n`/1/abc/assets?filter[node]=departments%2Fdep101`\n\n###### Find all assets that are related to both node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101&amp;filter[node]=departments%2Fdep102`\n\n###### Find all assets that are related to either node DEP101 and DEP102:\n`/1/abc/assets?filter[node]=departments%2Fdep101,departments%2Fdep102`\n
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param [Hash] opts the optional parameters
     # @option opts [Float] :offset index to start result set from
     # @option opts [Float] :limit number of records to return
     # @option opts [Array<String>] :include comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets
     # @option opts [Array<String>] :filter_node limit to assets that are related to a node matching type/code
-    # @option opts [Array<String>] :filter_asset_type type of asset to return
+    # @option opts [Array<String>] :filter_asset_type type of asset to return. This filters the results by asset type, but returns all the assets associated with the result.
     # @return [Array<(AssetResultSet, Fixnum, Hash)>] AssetResultSet data, response status code and response headers
     def search_assets_with_http_info(namespace, opts = {})
       if @api_client.config.debugging

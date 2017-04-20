@@ -22,7 +22,7 @@ module BlueprintClient
 
     # 
     # Configure a template for a given asset type
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param template_body template body
     # @param [Hash] opts the optional parameters
@@ -34,7 +34,7 @@ module BlueprintClient
 
     # 
     # Configure a template for a given asset type
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param template_body template body
     # @param [Hash] opts the optional parameters
@@ -107,7 +107,7 @@ module BlueprintClient
 
     # 
     # Delete a template for a given asset type
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param [Hash] opts the optional parameters
     # @return [TemplateBody]
@@ -118,7 +118,7 @@ module BlueprintClient
 
     # 
     # Delete a template for a given asset type
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param [Hash] opts the optional parameters
     # @return [Array<(TemplateBody, Fixnum, Hash)>] TemplateBody data, response status code and response headers
@@ -182,7 +182,7 @@ module BlueprintClient
 
     # 
     # update a template for a given asset type
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param template_body template body
     # @param [Hash] opts the optional parameters
@@ -194,7 +194,7 @@ module BlueprintClient
 
     # 
     # update a template for a given asset type
-    # @param namespace identifier namespacing the blueprint.
+    # @param namespace identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
     # @param asset_type subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc.
     # @param template_body template body
     # @param [Hash] opts the optional parameters

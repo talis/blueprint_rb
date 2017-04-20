@@ -28,7 +28,7 @@ end
 
 api_instance = BlueprintClient::AssetTypeTemplatesApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 asset_type = "asset_type_example" # String | subtype of Asset, e.g. 'textbooks', 'digitisations', etc.
 
@@ -47,7 +47,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
  **template_body** | [**TemplateBody**](TemplateBody.md)| template body | 
 
@@ -85,7 +85,7 @@ end
 
 api_instance = BlueprintClient::AssetTypeTemplatesApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 asset_type = "asset_type_example" # String | subtype of Asset, e.g. 'textbooks', 'digitisations', etc.
 
@@ -102,7 +102,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
 
 ### Return type
@@ -139,7 +139,7 @@ end
 
 api_instance = BlueprintClient::AssetTypeTemplatesApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 asset_type = "asset_type_example" # String | subtype of Asset, e.g. 'textbooks', 'digitisations', etc.
 
@@ -158,7 +158,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **asset_type** | **String**| subtype of Asset, e.g. &#39;textbooks&#39;, &#39;digitisations&#39;, etc. | 
  **template_body** | [**TemplateBody**](TemplateBody.md)| template body | 
 
