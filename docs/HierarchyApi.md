@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**add_node**](HierarchyApi.md#add_node) | **POST** /{namespaceIncGlobal}/nodes | 
 [**bulk_upload**](HierarchyApi.md#bulk_upload) | **POST** /{namespace}/nodes.csv | 
 [**delete_node**](HierarchyApi.md#delete_node) | **DELETE** /{namespace}/nodes/{type}/{id} | 
+[**delete_nodes**](HierarchyApi.md#delete_nodes) | **DELETE** /{namespaceIncGlobal}/nodes | Delete nodes
 [**export_hierarchy**](HierarchyApi.md#export_hierarchy) | **GET** /{namespace}/nodes.csv | 
 [**get_ancestors**](HierarchyApi.md#get_ancestors) | **GET** /{namespace}/nodes/{type}/{id}/ancestors | Get ancestor nodes
 [**get_children**](HierarchyApi.md#get_children) | **GET** /{namespace}/nodes/{type}/{id}/children | Get child nodes
@@ -19,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **add_node**
-> NodeBody add_node(namespace_inc_global, body, )
+> NodeBody add_node(namespace_inc_globalbody, )
 
 
 
@@ -43,7 +44,7 @@ body = BlueprintClient::NodeBody.new # NodeBody | node
 
 
 begin
-  result = api_instance.add_node(namespace_inc_global, body, )
+  result = api_instance.add_node(namespace_inc_globalbody, )
   p result
 rescue BlueprintClient::ApiError => e
   puts "Exception when calling HierarchyApi->add_node: #{e}"
@@ -91,7 +92,7 @@ end
 
 api_instance = BlueprintClient::HierarchyApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 
 begin
@@ -105,7 +106,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
 
 ### Return type
 
@@ -141,7 +142,7 @@ end
 
 api_instance = BlueprintClient::HierarchyApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 id = "id_example" # String | id identifying a domain model
 
@@ -159,9 +160,60 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **id** | **String**| id identifying a domain model | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/vnd.api+json
+
+
+
+# **delete_nodes**
+> delete_nodes(namespace_inc_global)
+
+Delete nodes
+
+Delete all nodes belonging to the given namespace.
+
+### Example
+```ruby
+# load the gem
+require 'blueprint_ruby_client'
+# setup authorization 
+BlueprintClient.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BlueprintClient::HierarchyApi.new
+
+namespace_inc_global = "namespace_inc_global_example" # String | identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call.
+
+
+begin
+  #Delete nodes
+  api_instance.delete_nodes(namespace_inc_global)
+rescue BlueprintClient::ApiError => e
+  puts "Exception when calling HierarchyApi->delete_nodes: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **namespace_inc_global** | **String**| identifier namespacing the blueprint. `global` is a special namespace which references data from all blueprints in the call. | 
 
 ### Return type
 
@@ -197,7 +249,7 @@ end
 
 api_instance = BlueprintClient::HierarchyApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 
 begin
@@ -211,7 +263,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
 
 ### Return type
 
@@ -249,7 +301,7 @@ api_instance = BlueprintClient::HierarchyApi.new
 
 id = "id_example" # String | id identifying a domain model
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
@@ -272,7 +324,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| id identifying a domain model | 
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **offset** | [**Float**](.md)| index to start result set from | [optional] 
  **limit** | [**Float**](.md)| number of records to return | [optional] 
@@ -313,7 +365,7 @@ api_instance = BlueprintClient::HierarchyApi.new
 
 id = "id_example" # String | id identifying a domain model
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
@@ -336,7 +388,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| id identifying a domain model | 
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **offset** | [**Float**](.md)| index to start result set from | [optional] 
  **limit** | [**Float**](.md)| number of records to return | [optional] 
@@ -377,7 +429,7 @@ api_instance = BlueprintClient::HierarchyApi.new
 
 id = "id_example" # String | id identifying a domain model
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
@@ -400,7 +452,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| id identifying a domain model | 
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **offset** | [**Float**](.md)| index to start result set from | [optional] 
  **limit** | [**Float**](.md)| number of records to return | [optional] 
@@ -439,7 +491,7 @@ end
 
 api_instance = BlueprintClient::HierarchyApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 id = "id_example" # String | id identifying a domain model
 
@@ -462,7 +514,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **id** | **String**| id identifying a domain model | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **include** | [**Array&lt;String&gt;**](String.md)| comma separated list of elements to hydrate. Can include children, parents, nodes, and/or assets | [optional] 
@@ -503,7 +555,7 @@ api_instance = BlueprintClient::HierarchyApi.new
 
 id = "id_example" # String | id identifying a domain model
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 type = "type_example" # String | subtype of Node, e.g. 'modules', 'departments', etc.
 
@@ -526,7 +578,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| id identifying a domain model | 
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
  **offset** | [**Float**](.md)| index to start result set from | [optional] 
  **limit** | [**Float**](.md)| number of records to return | [optional] 
@@ -565,7 +617,7 @@ end
 
 api_instance = BlueprintClient::HierarchyApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 id = "id_example" # String | id identifying a domain model
 
@@ -587,7 +639,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **id** | **String**| id identifying a domain model | 
  **body** | [**NodeBody**](NodeBody.md)| node | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
@@ -608,11 +660,11 @@ Name | Type | Description  | Notes
 
 
 # **search_nodes**
-> NodeResultSet search_nodes(namespace_inc_global, , opts)
+> NodeResultSet search_nodes(namespace_inc_global, opts)
 
 Search nodes
 
-This endpoint is a really flexible way to ask questions about the hierarchy.\nThe includes parameter can be set to either parents, children, assets.\n\nExamples:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all nodes that are descendants of DEP101 or DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101,departments%2Fdep102`\n\n###### Find all nodes that are descendants of DEP101 and DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101&filter[descendant]=departments%2Fdep102``\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&filter[nodeType]=Departments` # <= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&filter[ancestor]=departments%2FDEP101&filter[hasAssets]=true&filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node's valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[from]=20150101&filter[to]=20151231`\n\n###### Find all nodes of type modules with assets which are also related to DEP101.\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=true&filter[assetNode]=departments%2Fdep101`\n
+This endpoint is a really flexible way to ask questions about the hierarchy.\nThe includes parameter can be set to either parents, children, assets.\n\nExamples:\n\n###### Find all nodes for abc:\n`/1/abc/nodes`\n\n###### Find all modules for abc:\n`/1/abc/nodes?filter[nodeType]=Modules`\n\n###### Find all nodes that are descendants of DEP101:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101`\n\n###### Find all nodes that are descendants of DEP101 or DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101,departments%2Fdep102`\n\n###### Find all nodes that are descendants of DEP101 and DEP102:\n`/1/abc/nodes?filter[descendant]=departments%2Fdep101&filter[descendant]=departments%2Fdep102``\n\n###### Find all Departments that are ancestors of ABF203:\n`/1/abc/nodes?filter[descendant]=modules%2Fabf203&filter[nodeType]=Departments` # <= case insensitive\n\n###### Find all nodes with list assets that are descendants of DEP101 for abc:\n`/1/abc/nodes?filter[nodeType]=Modules&filter[ancestor]=departments%2FDEP101&filter[hasAssets]=true&filter[assetType]=Lists`\n\n###### Globally, find all modules that have no list assets\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[assetType]=Lists`\n\n###### Find all nodes of type modules during 2015 that have no assets. Note a node's valid_from/valid_to just need to overlap from/to to qualify\n`/1/global/nodes?filter[nodeType]=Modules&filter[hasAssets]=false&filter[from]=20150101&filter[to]=20151231`\n\n###### Find all nodes of type modules with assets which are also related to DEP101.\n`/1/global/nodes?filter[nodeType]=Modules&filter[asset.node]=departments%2Fdep101`\n
 
 ### Example
 ```ruby
@@ -639,7 +691,7 @@ opts = {
   filter_ancestor: ["filter_ancestor_example"], # Array<String> | limit to nodes with ancestor matching type/code
   filter_descendant: ["filter_descendant_example"], # Array<String> | limit to nodes with descendant matching type/code
   filter_has_assets: true, # BOOLEAN | limit to either nodes that have assets (true) nodes that have no assets (false) or omit to consider both nodes with and without assets
-  filter_asset_type: ["filter_asset_type_example"], # Array<String> | type of asset to return
+  filter_asset_type: ["filter_asset_type_example"], # Array<String> | type of asset to return. This filters the results by asset type, but returns all the assets associated with the result.
   filter_from: Date.parse("2013-10-20"), # Date | limit to results valid after this date, format is  ISO8601 date
   filter_to: Date.parse("2013-10-20"), # Date | limit to results valid before this date, format is  ISO8601
   q_node: "q_node_example", # String | query term(s) to search for nodes.  Allows wildcard searching with '*'
@@ -652,7 +704,7 @@ opts = {
 
 begin
   #Search nodes
-  result = api_instance.search_nodes(namespace_inc_global, , opts)
+  result = api_instance.search_nodes(namespace_inc_global, opts)
   p result
 rescue BlueprintClient::ApiError => e
   puts "Exception when calling HierarchyApi->search_nodes: #{e}"
@@ -674,7 +726,7 @@ Name | Type | Description  | Notes
  **filter_ancestor** | [**Array&lt;String&gt;**](String.md)| limit to nodes with ancestor matching type/code | [optional] 
  **filter_descendant** | [**Array&lt;String&gt;**](String.md)| limit to nodes with descendant matching type/code | [optional] 
  **filter_has_assets** | **BOOLEAN**| limit to either nodes that have assets (true) nodes that have no assets (false) or omit to consider both nodes with and without assets | [optional] 
- **filter_asset_type** | [**Array&lt;String&gt;**](String.md)| type of asset to return | [optional] 
+ **filter_asset_type** | [**Array&lt;String&gt;**](String.md)| type of asset to return. This filters the results by asset type, but returns all the assets associated with the result. | [optional] 
  **filter_from** | **Date**| limit to results valid after this date, format is  ISO8601 date | [optional] 
  **filter_to** | **Date**| limit to results valid before this date, format is  ISO8601 | [optional] 
  **q_node** | **String**| query term(s) to search for nodes.  Allows wildcard searching with &#39;*&#39; | [optional] 
@@ -718,7 +770,7 @@ end
 
 api_instance = BlueprintClient::HierarchyApi.new
 
-namespace = "namespace_example" # String | identifier namespacing the blueprint.
+namespace = "namespace_example" # String | identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores.
 
 id = "id_example" # String | id identifying a domain model
 
@@ -739,7 +791,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **namespace** | **String**| identifier namespacing the blueprint. | 
+ **namespace** | **String**| identifier namespacing the blueprint. It must start with a letter or underscore and can only be followed by letters, numbers and underscores. | 
  **id** | **String**| id identifying a domain model | 
  **body** | [**NodeBody**](NodeBody.md)| node | 
  **type** | **String**| subtype of Node, e.g. &#39;modules&#39;, &#39;departments&#39;, etc. | 
